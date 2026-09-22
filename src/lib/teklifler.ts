@@ -89,7 +89,7 @@ export const TEKLIF_SEKILLERI: TeklifSekli[] = [
     id: 'bodrumsuz-ileri-kaba',
     title: 'Bodrumsuz İleri Kaba İnşaat',
     summary:
-      'Bodrumsuz kaba inşaatın üzerine; sıva, şap, tesisat geçişleri ve doğrama montajını da ekleyen teslim seviyesidir.',
+      'Bodrumsuz kaba inşaatın üzerine; sıva, şap ve tesisat geçişlerini de ekleyen teslim seviyesidir. (Kapı ve doğrama dahil değildir.)',
     groups: [
       {
         title: 'Hafriyat ve Temel',
@@ -126,7 +126,7 @@ export const TEKLIF_SEKILLERI: TeklifSekli[] = [
     id: 'bodrumlu-ileri-kaba',
     title: 'Bodrumlu İleri Kaba İnşaat',
     summary:
-      'Bodrumlu kaba inşaatın üzerine; sıva, şap, tesisat geçişleri ve doğrama montajını da ekleyen en kapsamlı kaba teslim seviyesidir.',
+      'Bodrumlu kaba inşaatın üzerine; sıva, şap ve tesisat geçişlerini de ekleyen en kapsamlı kaba teslim seviyesidir. (Kapı ve doğrama dahil değildir.)',
     groups: [
       {
         title: 'Hafriyat ve Temel',
