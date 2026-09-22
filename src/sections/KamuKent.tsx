@@ -412,12 +412,12 @@ export default function KamuKent() {
                     <Input id="kk-phone" required type="tel" placeholder="05XX XXX XX XX" className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="kk-ada" className="text-white/80">Ada No</Label>
-                    <Input id="kk-ada" inputMode="numeric" placeholder="Örn. 12" defaultValue={ada} className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
+                    <Label htmlFor="kk-ada" className="text-white/80">Ada No *</Label>
+                    <Input id="kk-ada" required inputMode="numeric" placeholder="Örn. 12" defaultValue={ada} className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="kk-parsel" className="text-white/80">Parsel No</Label>
-                    <Input id="kk-parsel" inputMode="numeric" placeholder="Örn. 3" defaultValue={parsel} className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
+                    <Label htmlFor="kk-parsel" className="text-white/80">Parsel No *</Label>
+                    <Input id="kk-parsel" required inputMode="numeric" placeholder="Örn. 3" defaultValue={parsel} className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="kk-kat" className="text-white/80">Kat İmarı</Label>
