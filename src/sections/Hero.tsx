@@ -41,9 +41,9 @@ export default function Hero() {
 
         <Reveal delay={240}>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
-            S.S. KamuKent Arsa ve Konut Yapı Kooperatifi'nde betonarme proje
-            müellifliği, fenni mesul görevi ve Enerji Kimlik Belgesi hizmetleriyle
-            yapınızın her aşamasında yanınızdayız.
+            Kaba inşaat, ileri kaba inşaat ve anahtar teslim inşaat seçeneklerimiz ile
+            Enerji Kimlik Belgesi hizmetlerimizle; ruhsat aşamasından yapı kullanma
+            aşamasına kadar yanınızdayız.
           </p>
         </Reveal>
 
