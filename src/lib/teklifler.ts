@@ -114,10 +114,9 @@ export const TEKLIF_SEKILLERI: TeklifSekli[] = [
         items: ['İç sıva imalatları', 'Dış sıva imalatları', 'Şap imalatları (yer kaplaması altı)'],
       },
       {
-        title: 'Tesisat ve Doğrama',
+        title: 'Tesisat',
         items: [
           'Elektrik ve sıhhi tesisat kalıp içi geçiş boruları',
-          'Pencere ve kapı doğrama montajı',
           'Çatı kaplaması ve yalıtımı',
         ],
       },
@@ -157,12 +156,11 @@ export const TEKLIF_SEKILLERI: TeklifSekli[] = [
         ],
       },
       {
-        title: 'Sıva, Şap ve Doğrama',
+        title: 'Sıva, Şap ve Tesisat',
         items: [
           'İç ve dış sıva imalatları',
           'Şap imalatları (yer kaplaması altı)',
           'Elektrik ve sıhhi tesisat kalıp içi geçiş boruları',
-          'Pencere ve kapı doğrama montajı',
           'Çatı kaplaması ve yalıtımı',
         ],
       },

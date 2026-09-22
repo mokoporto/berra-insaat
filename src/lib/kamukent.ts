@@ -238,12 +238,11 @@ export const CONSTRUCTION_TYPES: ConstructionType[] = [
     id: 'ileri-kaba',
     title: 'İleri Kaba İnşaat',
     summary:
-      'Kaba inşaatın üzerine; sıva, şap, tesisat geçişleri ve doğrama montajı da eklenmiş, ince işe hazır teslim seviyesidir.',
+      'Kaba inşaatın üzerine; sıva, şap ve tesisat geçişleri de eklenmiş, ince işe hazır teslim seviyesidir. (Kapı ve doğrama dahil değildir.)',
     includes: [
       'Kaba inşaatta yer alan tüm işler',
       'İç ve dış sıva imalatları',
       'Şap ve tesisat geçiş hatları',
-      'Pencere ve kapı doğrama montajı',
     ],
     idealFor: 'İç mimariyi kendisi tasarlayıp ince işi farklı bir ekibe yaptıracaklar için.',
   },
