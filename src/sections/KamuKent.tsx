@@ -338,14 +338,17 @@ export default function KamuKent() {
                   <h5 className="text-sm font-semibold uppercase tracking-wider text-brand">
                     Ruhsat İçin Gerekli Diğer Ödemeler
                   </h5>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     {DIGER_ODEMELER.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-700"
+                      <div
+                        key={item.title}
+                        className="rounded-xl bg-neutral-50 px-4 py-3"
                       >
-                        {item}
-                      </span>
+                        <p className="text-sm font-semibold text-neutral-900">{item.title}</p>
+                        {item.detail && (
+                          <p className="mt-1 text-xs leading-relaxed text-neutral-600">{item.detail}</p>
+                        )}
+                      </div>
                     ))}
                   </div>
                   <p className="mt-3 text-xs leading-relaxed text-neutral-500">

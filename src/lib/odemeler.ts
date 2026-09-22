@@ -40,12 +40,28 @@ export const PROJE_MUELLIF_ODEMELERI: Record<'bodrumsuz' | 'bodrumlu', MuellifOd
   },
 }
 
-export const DIGER_ODEMELER = [
-  'Şantiye Şefi',
-  'Numarataj Krokisi ve Belgesi',
-  'İZSU Kanal Katılım Belgesi',
-  'Belediye Harcı',
-  'İş Takip Bedeli',
+export const DIGER_ODEMELER: { title: string; detail: string }[] = [
+  {
+    title: 'Şantiye Şefi',
+    detail: '1 senelik şantiye şefi ücreti yaklaşık 80.000 ₺ – 100.000 ₺ aralığındadır.',
+  },
+  {
+    title: 'Numarataj Krokisi ve Belgesi',
+    detail: 'Belediye harcı ödemesi ile alınır.',
+  },
+  {
+    title: 'İZSU Kanal Katılım Belgesi',
+    detail:
+      'Ücret İZSU tarafından hesaplanır; ortalama 100.000 ₺ civarında çıkmaktadır. Son durumu kontrol ediniz.',
+  },
+  {
+    title: 'Belediye Harcı',
+    detail: '',
+  },
+  {
+    title: 'İş Takip Bedeli',
+    detail: '',
+  },
 ]
 
 export const DIGER_ODEMELER_NOTU =
