@@ -43,7 +43,8 @@ export default function Hero() {
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
             Kaba inşaat, ileri kaba inşaat ve anahtar teslim inşaat seçeneklerimiz ile
             Enerji Kimlik Belgesi hizmetlerimizle; ruhsat aşamasından yapı kullanma
-            aşamasına kadar yanınızdayız.
+            aşamasına kadar yanınızdayız. Bugüne kadar <strong className="font-semibold text-white">123 adet</strong> kaba
+            inşaat, ileri kaba inşaat ve anahtar teslim inşaat teslim edilmiştir.
           </p>
         </Reveal>
 
