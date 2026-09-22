@@ -280,88 +280,14 @@ export interface KatOption {
   ruhsatItems: RuhsatItem[]
 }
 
-export const KAT_OPTIONS: Record<KatType, KatOption> = {
-  '2.5A': {
-    label: '2.5 Kat A Tipi',
-    headline: 'Parseliniz 2.5 kat A tipi mimariye sahiptir',
+export type RuhsatKat = '2.5' | '3.5'
+
+export const KAT_OPTIONS: Record<RuhsatKat, KatOption> = {
+  '2.5': {
+    label: '2.5 Kat',
+    headline: 'Parseliniz 2.5 kat imarlıdır',
     description:
-      '2.5 katlı A tipi yapılar için ruhsat başvurusunda aşağıdaki evraklar istenmektedir.',
-    ruhsatItems: [
-      {
-        title: 'Dilekçe',
-        detail: 'Belediyeye yapılacak ruhsat başvuru dilekçesi.',
-      },
-      {
-        title: 'Vekaletname',
-        detail: 'Yapı sahibi adına işlem yapacak kişi için noterden alınmış vekaletname.',
-      },
-      {
-        title: 'Tapu',
-        detail: 'Parsale ait güncel tapu senedi.',
-      },
-      {
-        title: 'İmar durumu belgesi',
-        detail: 'Belediyeden alınan güncel imar durumu belgesi.',
-      },
-      {
-        title: 'Numarataj krokisi ve belgesi',
-        detail: 'Numarataj biriminden alınan kroki ve belge.',
-      },
-      {
-        title: 'İZSU Kanal katılım belgesi',
-        detail: 'İZSU\u2019dan alınan kanal katılım belgesi.',
-      },
-      {
-        title: 'Yapı müteahhiti evrakları',
-        detail: 'Müteahhitlik bilgilerini kapsayan evrak grubu:',
-        subItems: [
-          'Yapı sahibi ve müteahhit sözleşmesi',
-          'Müteahhitlik taahhütnamesi',
-          'Ticaret odası kayıt belgesi',
-          'Vergi levhası',
-          'Yetki belgesi',
-          'İmza sirküsü',
-        ],
-      },
-      {
-        title: 'Şantiye şefi evrakları',
-        detail: 'Şantiye şefinin görevlendirilmesine ilişkin evrak grubu:',
-        subItems: [
-          'Diploma / oda kayıt belgesi',
-          'Şantiye şefi taahhütnamesi',
-          'İkametgah belgesi',
-          'Şantiye şefi hizmet sözleşmesi',
-        ],
-      },
-      {
-        title: 'Proje müellifleri taahhütnameleri ve büro tescil belgeleri',
-        detail: 'Tüm proje müelliflerine ait taahhütnameler ve büro tescil belgeleri.',
-      },
-      {
-        title: 'Mimari müellif muvafakatnamesi',
-        detail: 'Mimari projenin müellifi tarafından düzenlenen muvafakatname.',
-      },
-      {
-        title: 'Betonarme, iskele projesi ve raporları',
-        detail: 'Onaylı betonarme ve iskele projeleri ile ilgili raporlar.',
-      },
-      {
-        title: 'Fenni mesul evrakları',
-        detail: 'Fenni mesulun görevlendirilmesine ilişkin evrak grubu:',
-        subItems: [
-          'Fenni mesul taahhütnamesi',
-          'Yapı sahibi ve fenni mesul arasındaki sözleşme',
-          'Oda kayıt belgeleri',
-          'Noter tasdikli imza sirküleri',
-        ],
-      },
-    ],
-  },
-  '2.5B': {
-    label: '2.5 Kat B Tipi',
-    headline: 'Parseliniz 2.5 kat B tipi mimariye sahiptir',
-    description:
-      '2.5 katlı B tipi yapılar için ruhsat başvurusunda aşağıdaki evraklar istenmektedir.',
+      '2.5 katlı yapılar için ruhsat başvurusunda aşağıdaki evraklar istenmektedir.',
     ruhsatItems: [
       {
         title: 'Dilekçe',
@@ -510,6 +436,15 @@ export const KAT_OPTIONS: Record<KatType, KatOption> = {
       },
     ],
   },
+}
+
+/* ------------------------------------------------------------------ */
+/* SORGU SONUCU ETİKETLERİ — A/B ayrımı yalnızca sorgu sonucunda       */
+/* ------------------------------------------------------------------ */
+export const IMAR_LABELS: Record<KatType, string> = {
+  '2.5A': 'Parseliniz 2.5 kat A tipi mimariye sahiptir',
+  '2.5B': 'Parseliniz 2.5 kat B tipi mimariye sahiptir',
+  '3.5': 'Parseliniz 3.5 katlı mimariye sahiptir',
 }
 
 /* ------------------------------------------------------------------ */

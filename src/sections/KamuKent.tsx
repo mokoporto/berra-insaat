@@ -29,9 +29,10 @@ import {
 import {
   CONSTRUCTION_TYPES,
   KAT_OPTIONS,
+  IMAR_LABELS,
   queryParcel,
 } from '@/lib/kamukent'
-import type { KatType } from '@/lib/kamukent'
+import type { KatType, RuhsatKat } from '@/lib/kamukent'
 import {
   PROJE_MUELLIF_ODEMELERI,
   DIGER_ODEMELER,
@@ -44,7 +45,7 @@ export default function KamuKent() {
   const [ada, setAda] = useState('')
   const [parsel, setParsel] = useState('')
   const [result, setResult] = useState<QueryResult>(null)
-  const [kat, setKat] = useState<KatType>('3.5')
+  const [kat, setKat] = useState<RuhsatKat>('3.5')
   const [sent, setSent] = useState(false)
 
   function handleQuery(e: FormEvent<HTMLFormElement>) {
@@ -54,7 +55,7 @@ export default function KamuKent() {
     else if (r === 'notfound') setResult({ kind: 'notfound' })
     else {
       setResult({ kind: 'found', kat: r })
-      setKat(r)
+      setKat(r === '3.5' ? '3.5' : '2.5')
     }
   }
 
@@ -135,7 +136,7 @@ export default function KamuKent() {
                   <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-brand" />
                   <div>
                     <p className="font-display text-lg font-semibold text-neutral-900">
-                      {KAT_OPTIONS[result.kat].headline}
+                      {IMAR_LABELS[result.kat]}
                     </p>
                     <p className="mt-1 text-sm text-neutral-600">
                       Ada {ada} · Parsel {parsel} · Ruhsat rehberini inceleyin ve ücretsiz teklif alın.
@@ -230,7 +231,7 @@ export default function KamuKent() {
             {/* Kat seçici */}
             <div className="mt-8 flex flex-wrap justify-center gap-2">
               <div className="inline-flex flex-wrap justify-center gap-1 rounded-2xl bg-neutral-100 p-1.5 sm:rounded-full">
-                {(Object.keys(KAT_OPTIONS) as KatType[]).map((k) => (
+                {(Object.keys(KAT_OPTIONS) as RuhsatKat[]).map((k) => (
                   <button
                     key={k}
                     type="button"
@@ -420,11 +421,10 @@ export default function KamuKent() {
                     <select
                       id="kk-kat"
                       value={kat}
-                      onChange={(e) => setKat(e.target.value as KatType)}
+                      onChange={(e) => setKat(e.target.value as RuhsatKat)}
                       className="h-10 w-full rounded-xl border border-white/20 bg-white/10 px-3 text-sm text-white [&>option]:text-neutral-900"
                     >
-                      <option value="2.5A">2.5 Kat A Tipi</option>
-                      <option value="2.5B">2.5 Kat B Tipi</option>
+                      <option value="2.5">2.5 Kat</option>
                       <option value="3.5">3.5 Kat</option>
                     </select>
                   </div>
