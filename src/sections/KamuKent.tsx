@@ -12,6 +12,8 @@ import {
   Home,
   KeyRound,
   Landmark,
+  Wallet,
+  Zap,
 } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 import { Button } from '@/components/ui/button'
@@ -30,6 +32,11 @@ import {
   queryParcel,
 } from '@/lib/kamukent'
 import type { KatType } from '@/lib/kamukent'
+import {
+  PROJE_MUELLIF_ODEMELERI,
+  DIGER_ODEMELER,
+  DIGER_ODEMELER_NOTU,
+} from '@/lib/odemeler'
 
 type QueryResult = { kind: 'found'; kat: KatType } | { kind: 'empty' } | { kind: 'notfound' } | null
 
@@ -262,11 +269,102 @@ export default function KamuKent() {
                       </span>
                     </AccordionTrigger>
                     <AccordionContent className="pl-10 text-sm leading-relaxed text-neutral-600">
-                      {item.detail}
+                      <p>{item.detail}</p>
+                      {item.subItems && (
+                        <ul className="mt-3 space-y-1.5">
+                          {item.subItems.map((sub, j) => (
+                            <li key={sub} className="flex gap-2">
+                              <span className="shrink-0 font-semibold text-neutral-400">
+                                {String.fromCharCode(97 + j)})
+                              </span>
+                              {sub}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
+
+              {/* Ödemeler */}
+              <div className="mt-10 border-t border-neutral-100 pt-8">
+                <div className="flex items-center gap-3">
+                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand/10 text-brand">
+                    <Wallet className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-display text-lg font-semibold text-neutral-900">
+                      Ruhsat Aşaması Ödemeleri
+                    </h4>
+                    <p className="text-sm text-neutral-500">
+                      Proje müellifleri ödemeleri ve diğer giderler
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 grid gap-5 sm:grid-cols-2">
+                  {(['bodrumsuz', 'bodrumlu'] as const).map((key) => {
+                    const o = PROJE_MUELLIF_ODEMELERI[key]
+                    return (
+                      <div key={key} className="rounded-2xl border border-neutral-100 bg-neutral-50 p-6">
+                        <h5 className="text-sm font-semibold uppercase tracking-wider text-brand">
+                          {o.label}
+                        </h5>
+                        <ul className="mt-4 space-y-2">
+                          {o.items.map((item) => (
+                            <li key={item} className="flex items-start gap-2.5 text-sm text-neutral-700">
+                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                        <p className="mt-4 border-t border-neutral-200 pt-3 text-sm text-neutral-500">
+                          Toplam:{' '}
+                          <span className="font-display text-lg font-bold text-neutral-900">{o.total}</span>
+                        </p>
+                        {o.notes.map((note) => (
+                          <p key={note} className="mt-2 text-xs leading-relaxed text-neutral-500">
+                            Not: {note}
+                          </p>
+                        ))}
+                      </div>
+                    )
+                  })}
+                </div>
+
+                <div className="mt-5 rounded-2xl border border-neutral-100 bg-white p-6">
+                  <h5 className="text-sm font-semibold uppercase tracking-wider text-brand">
+                    Ruhsat İçin Gerekli Diğer Ödemeler
+                  </h5>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {DIGER_ODEMELER.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full bg-neutral-100 px-4 py-1.5 text-sm font-medium text-neutral-700"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="mt-3 text-xs leading-relaxed text-neutral-500">
+                    Not: {DIGER_ODEMELER_NOTU}
+                  </p>
+                </div>
+
+                <div className="mt-7 flex justify-center">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="rounded-full bg-brand px-8 text-sm font-semibold text-white hover:bg-brand-navy"
+                  >
+                    <a href="#kamukent-teklif">
+                      <Zap className="mr-2 h-4 w-4" />
+                      Anında Teklif Al
+                    </a>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </Reveal>

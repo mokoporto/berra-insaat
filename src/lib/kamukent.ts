@@ -263,15 +263,21 @@ export const CONSTRUCTION_TYPES: ConstructionType[] = [
 ]
 
 /* ------------------------------------------------------------------ */
-/* MİMARİ TİP SEÇENEKLERİ — RUHSAT AŞAMASI BİLGİLERİ                  */
-/* (Aşağıdaki maddeler örnektir; gerçek listeleri sağladığınızda      */
-/* sadece bu bölümü güncelleyin.)                                      */
+/* MİMARİ TİP SEÇENEKLERİ — RUHSAT BAŞVURUSU EVRAKLARI                 */
+/* Kaynak: "Kamukent 2.5 Kat Ruhsat Evrakları.pdf" ve                  */
+/*         "Kamukent 3.5 Kat Ruhsat Evrakları.pdf"                     */
 /* ------------------------------------------------------------------ */
+export interface RuhsatItem {
+  title: string
+  detail: string
+  subItems?: string[]
+}
+
 export interface KatOption {
   label: string
   headline: string
   description: string
-  ruhsatItems: { title: string; detail: string }[]
+  ruhsatItems: RuhsatItem[]
 }
 
 export const KAT_OPTIONS: Record<KatType, KatOption> = {
@@ -279,27 +285,75 @@ export const KAT_OPTIONS: Record<KatType, KatOption> = {
     label: '2.5 Kat A Tipi',
     headline: 'Parseliniz 2.5 kat A tipi mimariye sahiptir',
     description:
-      '2.5 katlı A tipi mimariler için ruhsat aşamasında genellikle aşağıdaki belge ve süreçler istenir. Kesin liste, güncel imar durumu ve belediye şartlarına göre netleştirilir.',
+      '2.5 katlı A tipi yapılar için ruhsat başvurusunda aşağıdaki evraklar istenmektedir.',
     ruhsatItems: [
       {
+        title: 'Dilekçe',
+        detail: 'Belediyeye yapılacak ruhsat başvuru dilekçesi.',
+      },
+      {
+        title: 'Vekaletname',
+        detail: 'Yapı sahibi adına işlem yapacak kişi için noterden alınmış vekaletname.',
+      },
+      {
+        title: 'Tapu',
+        detail: 'Parsale ait güncel tapu senedi.',
+      },
+      {
         title: 'İmar durumu belgesi',
-        detail: 'Belediyeden parselinize ait güncel imar durumu sorgulanır ve belge alınır.',
+        detail: 'Belediyeden alınan güncel imar durumu belgesi.',
       },
       {
-        title: 'Mimari proje',
-        detail: 'Onaylı mimari proje; kat planları, cepheler ve kesitlerle birlikte hazırlanır.',
+        title: 'Numarataj krokisi ve belgesi',
+        detail: 'Numarataj biriminden alınan kroki ve belge.',
       },
       {
-        title: 'Statik proje',
-        detail: 'Zemin etüdü ve deprem yönetmeliğine uygun taşıyıcı sistem projesi düzenlenir.',
+        title: 'İZSU Kanal katılım belgesi',
+        detail: 'İZSU\u2019dan alınan kanal katılım belgesi.',
       },
       {
-        title: 'Mekanik ve tesisat projeleri',
-        detail: 'Elektrik, su ve atık su tesisat projeleri ile birlikte ruhsat dosyasına eklenir.',
+        title: 'Yapı müteahhiti evrakları',
+        detail: 'Müteahhitlik bilgilerini kapsayan evrak grubu:',
+        subItems: [
+          'Yapı sahibi ve müteahhit sözleşmesi',
+          'Müteahhitlik taahhütnamesi',
+          'Ticaret odası kayıt belgesi',
+          'Vergi levhası',
+          'Yetki belgesi',
+          'İmza sirküsü',
+        ],
       },
       {
-        title: 'Belediye ruhsat başvurusu',
-        detail: 'Dosya belediyeye teslim edilir; eksiklik varsa tamamlanır ve ruhsat ücretleri ödenir.',
+        title: 'Şantiye şefi evrakları',
+        detail: 'Şantiye şefinin görevlendirilmesine ilişkin evrak grubu:',
+        subItems: [
+          'Diploma / oda kayıt belgesi',
+          'Şantiye şefi taahhütnamesi',
+          'İkametgah belgesi',
+          'Şantiye şefi hizmet sözleşmesi',
+        ],
+      },
+      {
+        title: 'Proje müellifleri taahhütnameleri ve büro tescil belgeleri',
+        detail: 'Tüm proje müelliflerine ait taahhütnameler ve büro tescil belgeleri.',
+      },
+      {
+        title: 'Mimari müellif muvafakatnamesi',
+        detail: 'Mimari projenin müellifi tarafından düzenlenen muvafakatname.',
+      },
+      {
+        title: 'Betonarme, iskele projesi ve raporları',
+        detail: 'Onaylı betonarme ve iskele projeleri ile ilgili raporlar.',
+      },
+      {
+        title: 'Fenni mesul evrakları',
+        detail: 'Fenni mesulun görevlendirilmesine ilişkin evrak grubu:',
+        subItems: [
+          'Fenni mesul taahhütnamesi',
+          'Yapı sahibi ve fenni mesul arasındaki sözleşme',
+          'Oda kayıt belgeleri',
+          'Noter tasdikli imza sirküleri',
+        ],
       },
     ],
   },
@@ -307,27 +361,75 @@ export const KAT_OPTIONS: Record<KatType, KatOption> = {
     label: '2.5 Kat B Tipi',
     headline: 'Parseliniz 2.5 kat B tipi mimariye sahiptir',
     description:
-      '2.5 katlı B tipi mimariler için ruhsat aşamasında genellikle aşağıdaki belge ve süreçler istenir. Kesin liste, güncel imar durumu ve belediye şartlarına göre netleştirilir.',
+      '2.5 katlı B tipi yapılar için ruhsat başvurusunda aşağıdaki evraklar istenmektedir.',
     ruhsatItems: [
       {
+        title: 'Dilekçe',
+        detail: 'Belediyeye yapılacak ruhsat başvuru dilekçesi.',
+      },
+      {
+        title: 'Vekaletname',
+        detail: 'Yapı sahibi adına işlem yapacak kişi için noterden alınmış vekaletname.',
+      },
+      {
+        title: 'Tapu',
+        detail: 'Parsale ait güncel tapu senedi.',
+      },
+      {
         title: 'İmar durumu belgesi',
-        detail: 'Belediyeden parselinize ait güncel imar durumu sorgulanır ve belge alınır.',
+        detail: 'Belediyeden alınan güncel imar durumu belgesi.',
       },
       {
-        title: 'Mimari proje',
-        detail: 'Onaylı mimari proje; kat planları, cepheler ve kesitlerle birlikte hazırlanır.',
+        title: 'Numarataj krokisi ve belgesi',
+        detail: 'Numarataj biriminden alınan kroki ve belge.',
       },
       {
-        title: 'Statik proje',
-        detail: 'Zemin etüdü ve deprem yönetmeliğine uygun taşıyıcı sistem projesi düzenlenir.',
+        title: 'İZSU Kanal katılım belgesi',
+        detail: 'İZSU\u2019dan alınan kanal katılım belgesi.',
       },
       {
-        title: 'Mekanik ve tesisat projeleri',
-        detail: 'Elektrik, su ve atık su tesisat projeleri ile birlikte ruhsat dosyasına eklenir.',
+        title: 'Yapı müteahhiti evrakları',
+        detail: 'Müteahhitlik bilgilerini kapsayan evrak grubu:',
+        subItems: [
+          'Yapı sahibi ve müteahhit sözleşmesi',
+          'Müteahhitlik taahhütnamesi',
+          'Ticaret odası kayıt belgesi',
+          'Vergi levhası',
+          'Yetki belgesi',
+          'İmza sirküsü',
+        ],
       },
       {
-        title: 'Belediye ruhsat başvurusu',
-        detail: 'Dosya belediyeye teslim edilir; eksiklik varsa tamamlanır ve ruhsat ücretleri ödenir.',
+        title: 'Şantiye şefi evrakları',
+        detail: 'Şantiye şefinin görevlendirilmesine ilişkin evrak grubu:',
+        subItems: [
+          'Diploma / oda kayıt belgesi',
+          'Şantiye şefi taahhütnamesi',
+          'İkametgah belgesi',
+          'Şantiye şefi hizmet sözleşmesi',
+        ],
+      },
+      {
+        title: 'Proje müellifleri taahhütnameleri ve büro tescil belgeleri',
+        detail: 'Tüm proje müelliflerine ait taahhütnameler ve büro tescil belgeleri.',
+      },
+      {
+        title: 'Mimari müellif muvafakatnamesi',
+        detail: 'Mimari projenin müellifi tarafından düzenlenen muvafakatname.',
+      },
+      {
+        title: 'Betonarme, iskele projesi ve raporları',
+        detail: 'Onaylı betonarme ve iskele projeleri ile ilgili raporlar.',
+      },
+      {
+        title: 'Fenni mesul evrakları',
+        detail: 'Fenni mesulun görevlendirilmesine ilişkin evrak grubu:',
+        subItems: [
+          'Fenni mesul taahhütnamesi',
+          'Yapı sahibi ve fenni mesul arasındaki sözleşme',
+          'Oda kayıt belgeleri',
+          'Noter tasdikli imza sirküleri',
+        ],
       },
     ],
   },
@@ -335,31 +437,76 @@ export const KAT_OPTIONS: Record<KatType, KatOption> = {
     label: '3.5 Kat',
     headline: 'Parseliniz 3.5 katlı mimariye sahiptir',
     description:
-      '3.5 katlı yapılar için ruhsat aşamasında istenen belge ve süreçler 2.5 kata göre genişleyebilir. Kesin liste, güncel imar durumu ve belediye şartlarına göre netleştirilir.',
+      '3.5 katlı yapılar için ruhsat başvurusunda aşağıdaki evraklar istenmektedir.',
     ruhsatItems: [
       {
+        title: 'Dilekçe',
+        detail: 'Belediyeye yapılacak ruhsat başvuru dilekçesi.',
+      },
+      {
+        title: 'Vekaletname',
+        detail: 'Yapı sahibi adına işlem yapacak kişi için noterden alınmış vekaletname.',
+      },
+      {
+        title: 'Tapu',
+        detail: 'Parsale ait güncel tapu senedi.',
+      },
+      {
         title: 'İmar durumu belgesi',
-        detail: 'Belediyeden parselinize ait güncel imar durumu sorgulanır ve belge alınır.',
+        detail: 'Belediyeden alınan güncel imar durumu belgesi.',
       },
       {
-        title: 'Mimari proje',
-        detail: 'Onaylı mimari proje; kat planları, cepheler ve kesitlerle birlikte hazırlanır.',
+        title: 'Numarataj krokisi ve belgesi',
+        detail: 'Numarataj biriminden alınan kroki ve belge.',
       },
       {
-        title: 'Statik proje',
-        detail: 'Zemin etüdü ve deprem yönetmeliğine uygun taşıyıcı sistem projesi düzenlenir.',
+        title: 'İZSU Kanal katılım belgesi',
+        detail: 'İZSU\u2019dan alınan kanal katılım belgesi.',
       },
       {
-        title: 'Mekanik ve tesisat projeleri',
-        detail: 'Elektrik, su ve atık su tesisat projeleri ile birlikte ruhsat dosyasına eklenir.',
+        title: 'Yapı müteahhiti evrakları',
+        detail: 'Müteahhitlik bilgilerini kapsayan evrak grubu:',
+        subItems: [
+          'Yapı sahibi ve müteahhit sözleşmesi',
+          'Müteahhitlik taahhütnamesi',
+          'Ticaret odası kayıt belgesi',
+          'Vergi levhası',
+          'Yetki belgesi',
+          'İmza sirküsü',
+        ],
       },
       {
-        title: 'Ekspertiz ve danışmanlık gereklilikleri',
-        detail: 'Yükseklik arttıkça istenebilecek ek raporlar (ör. çevre düzeni, yangın) dosyaya eklenir.',
+        title: 'Şantiye şefi evrakları',
+        detail: 'Şantiye şefinin görevlendirilmesine ilişkin evrak grubu:',
+        subItems: [
+          'Diploma / oda kayıt belgesi',
+          'Şantiye şefi taahhütnamesi',
+          'İkametgah belgesi',
+          'Şantiye şefi hizmet sözleşmesi',
+        ],
       },
       {
-        title: 'Belediye ruhsat başvurusu',
-        detail: 'Dosya belediyeye teslim edilir; eksiklik varsa tamamlanır ve ruhsat ücretleri ödenir.',
+        title: 'Proje müellifleri taahhütnameleri ve büro tescil belgeleri',
+        detail: 'Tüm proje müelliflerine ait taahhütnameler ve büro tescil belgeleri.',
+      },
+      {
+        title: 'Mimari müellif muvafakatnamesi',
+        detail: 'Mimari projenin müellifi tarafından düzenlenen muvafakatname.',
+      },
+      {
+        title: 'Betonarme, iskele projesi ve raporları',
+        detail: 'Onaylı betonarme ve iskele projeleri ile ilgili raporlar.',
+      },
+      {
+        title: 'Yapı denetim evrakları',
+        detail: 'Yapı denetim kuruluşuna ilişkin evrak grubu:',
+        subItems: [
+          'Yapı denetim proje kontrol föyleri',
+          'Yapı denetim hizmet sözleşmesi',
+          'Yapı denetim banka dekontu',
+          'Yapıya ilişkin bilgi formu (YİBF)',
+          'Yapı denetim kuruluşu taahhütnamesi',
+        ],
       },
     ],
   },
