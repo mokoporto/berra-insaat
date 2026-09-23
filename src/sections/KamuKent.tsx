@@ -75,7 +75,7 @@ export default function KamuKent() {
           </p>
         </Reveal>
 
-        {/* 1. İMAR SORGUSU */}
+        {/* 1. ARSAM KAÇ KATLI SORGUSU */}
         <Reveal delay={100}>
           <div id="kamukent-sorgu" className="mx-auto mt-14 max-w-4xl scroll-mt-24 rounded-[2rem] border border-neutral-100 bg-white p-8 shadow-xl shadow-neutral-900/5 sm:p-10">
             <div className="flex items-center gap-3">
@@ -83,7 +83,7 @@ export default function KamuKent() {
                 <Search className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="font-display text-xl font-semibold text-neutral-900">İmar Sorgusu</h3>
+                <h3 className="font-display text-xl font-semibold text-neutral-900">Arsam Kaç Katlı?</h3>
                 <p className="text-sm text-neutral-500">Ada ve parsel numaranızı girin</p>
               </div>
             </div>

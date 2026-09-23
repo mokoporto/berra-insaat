@@ -40,10 +40,11 @@ export default function About() {
             <Reveal delay={120}>
               <p className="mt-6 text-base leading-relaxed text-neutral-600 sm:text-lg">
                 2016 yılında İzmir Karaburun'da kurulan Berra Proje ve İnşaat;
-                S.S. KamuKent Arsa ve Konut Yapı Kooperatifi'nde betonarme proje
-                müellifliği, şantiyelerde fenni mesul görevi ve Enerji Kimlik
-                Belgesi düzenlenmesi başta olmak üzere yapı süreçlerinin teknik
-                yükünü üstlenmektedir.
+                kaba inşaat, ileri kaba inşaat, anahtar teslim inşaat ve restorasyon
+                işlerinin yanı sıra; S.S. KamuKent Arsa ve Konut Yapı Kooperatifi'nde
+                betonarme proje müellifliği, şantiyelerde fenni mesul görevi,
+                Enerji Kimlik Belgesi düzenlenmesi ile yapı ruhsatı ve yapı kullanma
+                aşamalarının tamamında teknik yükü üstlenmektedir.
               </p>
             </Reveal>
             <Reveal delay={180}>

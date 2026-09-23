@@ -12,9 +12,10 @@ export default function Footer() {
               <img src="/images/logo-white.png" alt="Berra Proje ve İnşaat" className="h-10 w-auto" />
             </a>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/60">
-              2016'dan beri Karaburun merkezli; S.S. KamuKent kooperatifinde
-              betonarme proje müellifliği, fenni mesullük ve Enerji Kimlik
-              Belgesi hizmetleri.
+              2016'dan beri Karaburun merkezli; kaba, ileri kaba ve anahtar teslim
+              inşaat, restorasyon, yapı ruhsatı ve kullanma aşamaları, S.S. KamuKent
+              kooperatifinde betonarme proje müellifliği, fenni mesullük ve Enerji
+              Kimlik Belgesi hizmetleri.
             </p>
           </div>
 

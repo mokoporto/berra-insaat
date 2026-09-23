@@ -1,7 +1,73 @@
-import { DraftingCompass, HardHat, FileBadge, ArrowUpRight } from 'lucide-react'
+import { DraftingCompass, HardHat, FileBadge, ArrowUpRight, Building2, Layers, KeyRound, Landmark, FileCheck2, Home } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 
 const SERVICES = [
+  {
+    icon: Building2,
+    title: 'Kaba İnşaat',
+    highlight: 'Tesfiyeden çatıya taşıyıcı yapı',
+    text: 'Hafriyat, temel, betonarme karkas, bims blok duvar ve projesine uygun çatı imalatı ile ana taşıyıcı yapının teslimi.',
+    items: [
+      'Hafriyat, grobeton ve radye temel',
+      'Betonarme karkas (kalıp, demir, beton)',
+      'Bims blok dolgu ve bölme duvarları',
+    ],
+  },
+  {
+    icon: Layers,
+    title: 'İleri Kaba İnşaat',
+    highlight: 'Sıva ve şap dahil teslim',
+    text: 'Kaba inşaatın üzerine iç-dış sıva, şap ve tesisat kalıp içi geçiş imalatlarını da ekleyen ara teslim seviyesi.',
+    items: [
+      'Kaba inşaatın tüm imalatları',
+      'İç ve dış sıva, şap imalatları',
+      'Tesisat kalıp içi geçiş boruları',
+    ],
+  },
+  {
+    icon: KeyRound,
+    title: 'Anahtar Teslim İnşaat',
+    highlight: 'Teslime hazır, oturulabilir yapı',
+    text: 'Projesindeki tüm mimari ve mekanik imalatların tamamlanarak yapının kullanıma hazır şekilde teslim edilmesi.',
+    items: [
+      'İleri kaba imalatların tamamı',
+      'İnce yapı, doğrama, kapı ve kaplama',
+      'Tesisat montaj ve testleri',
+    ],
+  },
+  {
+    icon: Landmark,
+    title: 'Restorasyon',
+    highlight: 'Tescilli yapılarda güvenli dönüşüm',
+    text: 'Tescilli ve eski yapıların onaylı restorasyon projelerine uygun olarak güçlendirilmesi, onarımı ve işlevlendirilmesi.',
+    items: [
+      'Restorasyon projesine uygun imalat',
+      'Yapı güçlendirme ve onarımlar',
+      'Koruma kurullarıyla koordinasyon',
+    ],
+  },
+  {
+    icon: FileCheck2,
+    title: 'Yapı Ruhsatı Aşamaları',
+    highlight: 'Başvurudan ruhsata kadar',
+    text: 'Proje tasdiki, belediyeye ruhsat başvurusu, eksik evrak ve harç takibinin tamamının sizin adınıza yürütülmesi.',
+    items: [
+      'Proje onay ve tasdik süreçleri',
+      'Ruhsat başvurusu ve evrak takibi',
+      'Harç ve ödeme planlaması',
+    ],
+  },
+  {
+    icon: Home,
+    title: 'Yapı Kullanma Aşaması',
+    highlight: 'İskân (yapı kullanma izni)',
+    text: 'Yapının tamamlanması sonrası denetim, tutanak ve yapı kullanma izin belgesi alınması aşamalarının yönetilmesi.',
+    items: [
+      'Son kontrol ve denetim süreçleri',
+      'İlgili kurum tutanaklarının alınması',
+      'Yapı kullanma izin belgesi başvurusu',
+    ],
+  },
   {
     icon: DraftingCompass,
     title: 'Betonarme Proje Müellifliği',
@@ -49,8 +115,9 @@ export default function Services() {
             Sunduklarımız
           </h2>
           <p className="mt-5 text-base leading-relaxed text-neutral-600 sm:text-lg">
-            Kooperatif konut projelerinden bağımsız yapılara; proje müellifliğinden
-            enerji kimlik belgesine kadar teknik süreçlerin tamamı tek elden.
+            Kaba inşaat, ileri kaba inşaat, anahtar teslim inşaat ve restorasyondan;
+            yapı ruhsatı ve yapı kullanma aşamalarına, proje müellifliğinden Enerji
+            Kimlik Belgesine kadar tüm süreçler tek elden.
           </p>
         </Reveal>
 
