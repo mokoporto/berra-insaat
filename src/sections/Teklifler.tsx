@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CheckCircle2, FileText, ArrowUpRight, Info } from 'lucide-react'
+import { CheckCircle2, FileText, ArrowUpRight, Info, Download } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 import { Button } from '@/components/ui/button'
 import { TEKLIF_SEKILLERI } from '@/lib/teklifler'
@@ -19,9 +19,9 @@ export default function Teklifler() {
             Kapsamlarımızı inceleyin
           </h2>
           <p className="mt-5 text-base leading-relaxed text-neutral-600 sm:text-lg">
-            Dört farklı teslim seviyesi için standart teklif kapsamlarımız aşağıdadır.
-            Fiyatlar arsa durumuna ve projeye göre belirlendiği için net teklif için
-            bizimle iletişime geçin.
+            Dört farklı teslim seviyesi için standart teklif kapsamlarımız aşağıdadır;
+            her kapsamı PDF olarak indirebilirsiniz. Fiyatlar arsa durumuna ve projeye
+            göre belirlendiği için net teklif için bizimle iletişime geçin.
           </p>
         </Reveal>
 
@@ -64,12 +64,20 @@ export default function Teklifler() {
                   </p>
                 </div>
               </div>
-              <Button asChild className="rounded-full bg-brand text-sm font-semibold text-white hover:bg-brand-navy">
-                <a href="#kamukent-teklif">
-                  Bu Kapsamda Teklif Al
-                  <ArrowUpRight className="ml-1.5 h-4 w-4" />
-                </a>
-              </Button>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <Button asChild variant="outline" className="rounded-full border-neutral-300 text-sm font-semibold text-neutral-900 hover:border-brand hover:bg-brand hover:text-white">
+                  <a href={current.pdf} download>
+                    <Download className="mr-1.5 h-4 w-4" />
+                    Kapsamı PDF İndir
+                  </a>
+                </Button>
+                <Button asChild className="rounded-full bg-brand text-sm font-semibold text-white hover:bg-brand-navy">
+                  <a href="#kamukent-teklif">
+                    Bu Kapsamda Teklif Al
+                    <ArrowUpRight className="ml-1.5 h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
             </div>
 
             <div className="mt-8 grid gap-5 sm:grid-cols-2">

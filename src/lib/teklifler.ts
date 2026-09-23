@@ -13,12 +13,15 @@ export interface TeklifSekli {
   title: string
   summary: string
   groups: TeklifGrup[]
+  /** Kapsam PDF'sinin public/ altındaki yolu */
+  pdf: string
 }
 
 export const TEKLIF_SEKILLERI: TeklifSekli[] = [
   {
     id: 'bodrumsuz-kaba',
     title: 'Bodrumsuz Kaba İnşaat',
+    pdf: '/teklifler/teklif-bodrumsuz-kaba.pdf',
     summary:
       'Bodrum bulunmayan arsalarda; hafriyat, temel, betonarme karkas ve çatının kaba imalatını kapsar.',
     groups: [
@@ -49,6 +52,7 @@ export const TEKLIF_SEKILLERI: TeklifSekli[] = [
   {
     id: 'bodrumlu-kaba',
     title: 'Bodrumlu Kaba İnşaat',
+    pdf: '/teklifler/teklif-bodrumlu-kaba.pdf',
     summary:
       'Bodrum katı bulunan arsalarda; bodrum hafriyatı, radye temel, bodrum perdeleri ve kaba yapı imalatlarını kapsar.',
     groups: [
@@ -88,6 +92,7 @@ export const TEKLIF_SEKILLERI: TeklifSekli[] = [
   {
     id: 'bodrumsuz-ileri-kaba',
     title: 'Bodrumsuz İleri Kaba İnşaat',
+    pdf: '/teklifler/teklif-bodrumsuz-ileri-kaba.pdf',
     summary:
       'Bodrumsuz kaba inşaatın üzerine; sıva, şap ve tesisat geçişlerini de ekleyen teslim seviyesidir. (Kapı ve doğrama dahil değildir.)',
     groups: [
@@ -125,6 +130,7 @@ export const TEKLIF_SEKILLERI: TeklifSekli[] = [
   {
     id: 'bodrumlu-ileri-kaba',
     title: 'Bodrumlu İleri Kaba İnşaat',
+    pdf: '/teklifler/teklif-bodrumlu-ileri-kaba.pdf',
     summary:
       'Bodrumlu kaba inşaatın üzerine; sıva, şap ve tesisat geçişlerini de ekleyen en kapsamlı kaba teslim seviyesidir. (Kapı ve doğrama dahil değildir.)',
     groups: [
