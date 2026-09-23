@@ -38,6 +38,7 @@ import {
   DIGER_ODEMELER,
   DIGER_ODEMELER_NOTU,
 } from '@/lib/odemeler'
+import { sendForm } from '@/lib/form'
 
 type QueryResult = { kind: 'found'; kat: KatType } | { kind: 'empty' } | { kind: 'notfound' } | null
 
@@ -47,6 +48,30 @@ export default function KamuKent() {
   const [result, setResult] = useState<QueryResult>(null)
   const [kat, setKat] = useState<RuhsatKat>('3.5')
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState(false)
+
+  async function handleTeklif(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setSending(true)
+    setSendError(false)
+    const data = new FormData(e.currentTarget)
+    const ok = await sendForm(
+      {
+        'Ad Soyad': data.get('name'),
+        Telefon: data.get('phone'),
+        'Ada No': data.get('ada'),
+        'Parsel No': data.get('parsel'),
+        'Kat İmarı': data.get('kat'),
+        'İnşaat Türü': data.get('type'),
+        Mesaj: data.get('message'),
+      },
+      'KamuKent Teklif Talebi — berramuhendislik.com',
+    )
+    setSending(false)
+    if (ok) setSent(true)
+    else setSendError(true)
+  }
 
   function handleQuery(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -397,32 +422,30 @@ export default function KamuKent() {
                 </div>
               ) : (
                 <form
-                  onSubmit={(e) => {
-                    e.preventDefault()
-                    setSent(true)
-                  }}
+                  onSubmit={handleTeklif}
                   className="mt-7 grid gap-4 sm:grid-cols-2"
                 >
                   <div className="space-y-2">
                     <Label htmlFor="kk-name" className="text-white/80">Ad Soyad *</Label>
-                    <Input id="kk-name" required placeholder="Adınız Soyadınız" className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
+                    <Input id="kk-name" name="name" required placeholder="Adınız Soyadınız" className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="kk-phone" className="text-white/80">Telefon *</Label>
-                    <Input id="kk-phone" required type="tel" placeholder="05XX XXX XX XX" className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
+                    <Input id="kk-phone" name="phone" required type="tel" placeholder="05XX XXX XX XX" className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="kk-ada" className="text-white/80">Ada No *</Label>
-                    <Input id="kk-ada" required inputMode="numeric" placeholder="Örn. 12" defaultValue={ada} className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
+                    <Input id="kk-ada" name="ada" required inputMode="numeric" placeholder="Örn. 12" defaultValue={ada} className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="kk-parsel" className="text-white/80">Parsel No *</Label>
-                    <Input id="kk-parsel" required inputMode="numeric" placeholder="Örn. 3" defaultValue={parsel} className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
+                    <Input id="kk-parsel" name="parsel" required inputMode="numeric" placeholder="Örn. 3" defaultValue={parsel} className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="kk-kat" className="text-white/80">Kat İmarı</Label>
                     <select
                       id="kk-kat"
+                      name="kat"
                       value={kat}
                       onChange={(e) => setKat(e.target.value as RuhsatKat)}
                       className="h-10 w-full rounded-xl border border-white/20 bg-white/10 px-3 text-sm text-white [&>option]:text-neutral-900"
@@ -435,11 +458,12 @@ export default function KamuKent() {
                     <Label htmlFor="kk-type" className="text-white/80">İnşaat Türü</Label>
                     <select
                       id="kk-type"
+                      name="type"
                       className="h-10 w-full rounded-xl border border-white/20 bg-white/10 px-3 text-sm text-white [&>option]:text-neutral-900"
                       defaultValue="anahtar-teslim"
                     >
                       {CONSTRUCTION_TYPES.map((t) => (
-                        <option key={t.id} value={t.id}>{t.title}</option>
+                        <option key={t.id} value={t.title}>{t.title}</option>
                       ))}
                     </select>
                   </div>
@@ -447,13 +471,20 @@ export default function KamuKent() {
                     <Label htmlFor="kk-msg" className="text-white/80">Mesajınız</Label>
                     <Textarea
                       id="kk-msg"
+                      name="message"
                       rows={4}
                       placeholder="Arsanızdan ve hedefinizden kısaca bahsedin..."
                       className="resize-none rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40"
                     />
                   </div>
-                  <Button type="submit" size="lg" className="rounded-full bg-brand-aqua text-sm font-semibold text-neutral-950 hover:bg-white sm:col-span-2">
-                    Teklif Talebi Gönder
+                  {sendError && (
+                    <p className="flex items-center gap-2 text-sm text-red-300 sm:col-span-2">
+                      <AlertCircle className="h-4 w-4 shrink-0" />
+                      Gönderim başarısız oldu. Lütfen tekrar deneyin veya bizi telefonla arayın.
+                    </p>
+                  )}
+                  <Button type="submit" size="lg" disabled={sending} className="rounded-full bg-brand-aqua text-sm font-semibold text-neutral-950 hover:bg-white sm:col-span-2 disabled:opacity-60">
+                    {sending ? 'Gönderiliyor…' : 'Teklif Talebi Gönder'}
                     <Send className="ml-2 h-4 w-4" />
                   </Button>
                 </form>

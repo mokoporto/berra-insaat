@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2 } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, AlertCircle } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { CONTACT } from '@/lib/site'
+import { sendForm } from '@/lib/form'
 
 const INFO = [
   { icon: MapPin, label: 'Adres', value: CONTACT.address },
@@ -17,10 +18,27 @@ const INFO = [
 
 export default function Contact() {
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState(false)
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSent(true)
+    setSending(true)
+    setSendError(false)
+    const data = new FormData(e.currentTarget)
+    const ok = await sendForm(
+      {
+        'Ad Soyad': data.get('name'),
+        Telefon: data.get('phone'),
+        'E-posta': data.get('email'),
+        Konu: data.get('subject'),
+        Mesaj: data.get('message'),
+      },
+      'İletişim Formu — berramuhendislik.com',
+    )
+    setSending(false)
+    if (ok) setSent(true)
+    else setSendError(true)
   }
 
   return (
@@ -87,37 +105,45 @@ export default function Contact() {
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="space-y-2">
                       <Label htmlFor="name">Ad Soyad *</Label>
-                      <Input id="name" required placeholder="Adınız Soyadınız" className="rounded-xl" />
+                      <Input id="name" name="name" required placeholder="Adınız Soyadınız" className="rounded-xl" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Telefon *</Label>
-                      <Input id="phone" required type="tel" placeholder="05XX XXX XX XX" className="rounded-xl" />
+                      <Input id="phone" name="phone" required type="tel" placeholder="05XX XXX XX XX" className="rounded-xl" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">E-posta *</Label>
-                    <Input id="email" required type="email" placeholder="ornek@eposta.com" className="rounded-xl" />
+                    <Input id="email" name="email" required type="email" placeholder="ornek@eposta.com" className="rounded-xl" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="subject">Konu</Label>
-                    <Input id="subject" placeholder="Örn. Konut projesi teklifi" className="rounded-xl" />
+                    <Input id="subject" name="subject" placeholder="Örn. Konut projesi teklifi" className="rounded-xl" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="message">Mesajınız *</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       required
                       rows={5}
                       placeholder="Projenizden kısaca bahsedin: konum, kapsam, hedef takvim..."
                       className="resize-none rounded-xl"
                     />
                   </div>
+                  {sendError && (
+                    <p className="flex items-center gap-2 text-sm text-red-600">
+                      <AlertCircle className="h-4 w-4 shrink-0" />
+                      Gönderim başarısız oldu. Lütfen tekrar deneyin veya bizi telefonla arayın.
+                    </p>
+                  )}
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full rounded-full bg-neutral-900 text-sm font-semibold text-white hover:bg-neutral-700"
+                    disabled={sending}
+                    className="w-full rounded-full bg-neutral-900 text-sm font-semibold text-white hover:bg-neutral-700 disabled:opacity-60"
                   >
-                    Mesajı Gönder
+                    {sending ? 'Gönderiliyor…' : 'Mesajı Gönder'}
                     <Send className="ml-2 h-4 w-4" />
                   </Button>
                   <p className="text-center text-xs text-neutral-400">
