@@ -25,6 +25,7 @@ os.makedirs(OUT_DIR, exist_ok=True)
 
 pdfmetrics.registerFont(TTFont("Arial", "/System/Library/Fonts/Supplemental/Arial.ttf"))
 pdfmetrics.registerFont(TTFont("Arial-Bold", "/System/Library/Fonts/Supplemental/Arial Bold.ttf"))
+pdfmetrics.registerFont(TTFont("Arial-Italic", "/System/Library/Fonts/Supplemental/Arial Italic.ttf"))
 
 BRAND = colors.HexColor("#3E5CAA")
 NAVY = colors.HexColor("#10162D")
@@ -168,9 +169,9 @@ def build(t: dict):
     )
     head.setStyle(TableStyle([("VALIGN", (0, 0), (-1, -1), "MIDDLE")]))
 
-    title = ParagraphStyle("title", fontName="Arial-Bold", fontSize=20, textColor=NAVY, spaceBefore=2, spaceAfter=4)
+    title = ParagraphStyle("title", fontName="Arial-Bold", fontSize=20, leading=26, textColor=NAVY, spaceBefore=2, spaceAfter=6)
     sub = ParagraphStyle("sub", fontName="Arial", fontSize=10.5, textColor=MUTED, leading=15)
-    group_h = ParagraphStyle("gh", fontName="Arial-Bold", fontSize=11.5, textColor=BRAND, spaceBefore=10, spaceAfter=4)
+    group_h = ParagraphStyle("gh", fontName="Arial-Bold", fontSize=11.5, leading=15, textColor=BRAND, spaceBefore=10, spaceAfter=4)
     item = ParagraphStyle("item", fontName="Arial", fontSize=10, textColor=colors.HexColor("#1C1F2A"), leading=15, leftIndent=10)
 
     story = [
@@ -186,7 +187,7 @@ def build(t: dict):
             block.append(Paragraph(f"•  {it}", item))
         story.append(KeepTogether(block))
 
-    fiyat_head = ParagraphStyle("fh", fontName="Arial-Bold", fontSize=11.5, textColor=NAVY, spaceBefore=16, spaceAfter=4)
+    fiyat_head = ParagraphStyle("fh", fontName="Arial-Bold", fontSize=11.5, leading=15, textColor=NAVY, spaceBefore=16, spaceAfter=4)
     fiyat_box_style = TableStyle([
         ("BOX", (0, 0), (-1, -1), 0.8, BRAND),
         ("INNERGRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#D6DCEA")),
@@ -209,6 +210,10 @@ def build(t: dict):
     fiyat.setStyle(fiyat_box_style)
 
     story += [
+        Paragraph(
+            "Not: Liste temel kapsamı gösterir; arsa imar durumu, zemin koşulları ve proje detaylarına göre kalemler değişebilir.",
+            ParagraphStyle("not", fontName="Arial-Italic", fontSize=8.5, textColor=MUTED, spaceBefore=10, leading=12),
+        ),
         Paragraph("Yatırım ve Ödeme Koşulları", fiyat_head),
         fiyat,
         Spacer(1, 10),
