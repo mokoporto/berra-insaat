@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 
 const PHOTOS = Array.from(
@@ -65,21 +65,6 @@ export default function Projects() {
                 />
               </button>
             ))}
-
-            {/* Video */}
-            <div className="break-inside-avoid overflow-hidden rounded-2xl bg-neutral-950">
-              <video
-                src="/images/projects/santiye-tanitim.mp4"
-                controls
-                preload="none"
-                playsInline
-                className="w-full"
-              />
-              <p className="flex items-center gap-2 px-4 py-3 text-xs font-medium text-white/70">
-                <Play className="h-3.5 w-3.5 text-brand-aqua" />
-                Şantiyemizden görüntüler
-              </p>
-            </div>
           </div>
         </Reveal>
       </div>
