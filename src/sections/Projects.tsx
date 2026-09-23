@@ -1,8 +1,35 @@
-import { Building2, Camera, ArrowUpRight } from 'lucide-react'
+import { useCallback, useEffect, useState } from 'react'
+import { X, ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
-import { Button } from '@/components/ui/button'
+
+const PHOTOS = Array.from(
+  { length: 41 },
+  (_, i) => `/images/projects/proje-${String(i + 1).padStart(2, '0')}.jpg`,
+)
 
 export default function Projects() {
+  const [active, setActive] = useState<number | null>(null)
+
+  const close = useCallback(() => setActive(null), [])
+  const step = useCallback(
+    (dir: 1 | -1) =>
+      setActive((cur) =>
+        cur === null ? cur : (cur + dir + PHOTOS.length) % PHOTOS.length,
+      ),
+    [],
+  )
+
+  useEffect(() => {
+    if (active === null) return
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') close()
+      if (e.key === 'ArrowRight') step(1)
+      if (e.key === 'ArrowLeft') step(-1)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [active, close, step])
+
   return (
     <section id="projeler" className="bg-white py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -13,43 +40,99 @@ export default function Projects() {
           <h2 className="font-display mt-4 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl">
             İmzamızı taşıyan yapılar
           </h2>
+          <p className="mt-5 text-base leading-relaxed text-neutral-600 sm:text-lg">
+            Şantiyelerimizden ve teslim ettiğimiz yapılardan kareler.
+            Fotoğrafların üzerine tıklayarak büyütebilirsiniz.
+          </p>
         </Reveal>
 
-        {/* Fotograflar henuz eklenmedi — bos durum */}
-        <Reveal delay={120}>
-          <div className="mx-auto mt-14 flex max-w-2xl flex-col items-center rounded-[2rem] border-2 border-dashed border-neutral-200 bg-neutral-50/60 px-8 py-16 text-center">
-            <div className="grid h-16 w-16 place-items-center rounded-2xl bg-brand/10 text-brand">
-              <Camera className="h-8 w-8" />
-            </div>
-            <h3 className="font-display mt-6 text-xl font-semibold text-neutral-900">
-              Fotoğraflar yakında eklenecek
-            </h3>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-neutral-600 sm:text-base">
-              Tamamlanan yapılarımıza ait fotoğraflar yakında bu sayfada
-              yayınlanacaktır. Güncel çalışmalarımız ve hizmetlerimiz hakkında
-              bilgi almak için bize ulaşabilirsiniz.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button asChild className="rounded-full bg-neutral-900 px-6 text-sm font-semibold text-white hover:bg-neutral-700">
-                <a href="#iletisim">
-                  Bize Ulaşın
-                  <ArrowUpRight className="ml-1.5 h-4 w-4" />
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="rounded-full border-neutral-300 px-6 text-sm font-semibold text-neutral-900 hover:bg-brand hover:text-white hover:border-brand"
+        {/* Galeri */}
+        <Reveal delay={100}>
+          <div className="mt-14 columns-2 gap-3 md:columns-3 lg:columns-4 [&>*]:mb-3">
+            {PHOTOS.map((src, i) => (
+              <button
+                key={src}
+                type="button"
+                onClick={() => setActive(i)}
+                className="group block w-full break-inside-avoid overflow-hidden rounded-2xl bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+                aria-label={`Fotoğraf ${i + 1} büyüt`}
               >
-                <a href="#kamukent">
-                  <Building2 className="mr-1.5 h-4 w-4" />
-                  KamuKent'i İnceleyin
-                </a>
-              </Button>
+                <img
+                  src={src}
+                  alt={`Berra Proje ve İnşaat — tamamlanan yapı ${i + 1}`}
+                  loading="lazy"
+                  className="w-full transition-transform duration-500 group-hover:scale-105"
+                />
+              </button>
+            ))}
+
+            {/* Video */}
+            <div className="break-inside-avoid overflow-hidden rounded-2xl bg-neutral-950">
+              <video
+                src="/images/projects/santiye-tanitim.mp4"
+                controls
+                preload="none"
+                playsInline
+                className="w-full"
+              />
+              <p className="flex items-center gap-2 px-4 py-3 text-xs font-medium text-white/70">
+                <Play className="h-3.5 w-3.5 text-brand-aqua" />
+                Şantiyemizden görüntüler
+              </p>
             </div>
           </div>
         </Reveal>
       </div>
+
+      {/* Lightbox */}
+      {active !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-950/90 p-4 backdrop-blur-sm"
+          onClick={close}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={close}
+            className="absolute right-4 top-4 grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+            aria-label="Kapat"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              step(-1)
+            }}
+            className="absolute left-3 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:left-6"
+            aria-label="Önceki fotoğraf"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          <img
+            src={PHOTOS[active]}
+            alt={`Berra Proje ve İnşaat — tamamlanan yapı ${active + 1}`}
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[85vh] max-w-full rounded-2xl object-contain shadow-2xl"
+          />
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              step(1)
+            }}
+            className="absolute right-3 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 sm:right-6"
+            aria-label="Sonraki fotoğraf"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium text-white">
+            {active + 1} / {PHOTOS.length}
+          </p>
+        </div>
+      )}
     </section>
   )
 }
