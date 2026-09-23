@@ -6,6 +6,9 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 // https://vite.dev/config/
 export default defineConfig({
   base: './',
+  // Bilinmeyen yollar 404 dönsün (SPA fallback olmasın) — sahte sitemap URL'leri
+  // gibi olmayan dosyalar arama motorlarına hatalı içerik olarak gitmesin.
+  appType: 'mpa',
   plugins: [inspectAttr(), react()],
   server: {
     port: 3000,

@@ -59,13 +59,21 @@ export default function Footer() {
           <p className="text-xs text-white/40">
             © {new Date().getFullYear()} Berra İnşaat. Tüm hakları saklıdır.
           </p>
-          <a
-            href="#anasayfa"
-            className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition hover:border-brand-aqua hover:text-brand-aqua"
-            aria-label="Yukarı dön"
-          >
-            <ArrowUp className="h-4 w-4" />
-          </a>
+          <div className="flex items-center gap-5">
+            <a
+              href="/gizlilik.html"
+              className="text-xs text-white/40 transition hover:text-brand-aqua"
+            >
+              Gizlilik Politikası
+            </a>
+            <a
+              href="#anasayfa"
+              className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/70 transition hover:border-brand-aqua hover:text-brand-aqua"
+              aria-label="Yukarı dön"
+            >
+              <ArrowUp className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

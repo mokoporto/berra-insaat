@@ -25,6 +25,12 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-brand focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
+      >
+        İçeriğe atla
+      </a>
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
         {/* Logo */}
         <a href="#anasayfa" className="flex items-center" onClick={() => setOpen(false)}>
