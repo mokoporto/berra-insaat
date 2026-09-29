@@ -1,4 +1,4 @@
-# AGENTS.md — berramuhendislik.com
+# AGENTS.md — berrayapi.com
 
 Kurumsal tanıtım sitesi (tek sayfa React/Vite uygulaması).
 
