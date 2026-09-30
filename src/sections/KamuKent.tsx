@@ -98,6 +98,14 @@ export default function KamuKent() {
             2.5 kat B tipi mi yoksa 3.5 katlı mimariye mi sahip olduğunu öğrenin;
             ruhsat sürecini inceleyin ve teklif alın.
           </p>
+          <p className="mt-4">
+            <a
+              href="/kamukent.html"
+              className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/5 px-5 py-2.5 text-sm font-semibold text-brand transition hover:bg-brand/10"
+            >
+              KamuKent parsel sorgulama rehberi ve sık sorulan sorular →
+            </a>
+          </p>
         </Reveal>
 
         {/* 1. ARSAM KAÇ KATLI SORGUSU */}
