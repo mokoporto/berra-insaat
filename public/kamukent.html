@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KamuKent Parsel Sorgulama | Karaburun / Mordoğan — Berra Proje ve İnşaat</title>
+    <meta name="description" content="KamuKent Karaburun parsel sorgulama: ada ve parsel numaranızı girin, arsanızın 2.5 kat A tipi, 2.5 kat B tipi veya 3.5 katlı mimariye sahip olup olmadığını öğrenin. Ruhsat evrakları, harçlar ve kaba / ileri kaba / anahtar teslim inşaat teklifi tek sayfada." />
+    <link rel="canonical" href="https://berrayapi.com/kamukent.html" />
+    <meta name="theme-color" content="#10162d" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Berra Proje ve İnşaat" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:url" content="https://berrayapi.com/kamukent.html" />
+    <meta property="og:title" content="KamuKent Parsel Sorgulama | Karaburun / Mordoğan" />
+    <meta property="og:description" content="KamuKent parseliniz kaç katlı? Ada/parsel numarası ile 2.5 kat A, 2.5 kat B veya 3.5 kat imarını öğrenin; ruhsat evraklarını inceleyin, teklif alın." />
+    <meta property="og:image" content="https://berrayapi.com/images/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="KamuKent Parsel Sorgulama | Karaburun / Mordoğan" />
+    <meta name="twitter:description" content="KamuKent parseliniz kaç katlı? Ücretsiz sorgulayın, ruhsat sürecini inceleyin, teklif alın." />
+
+    <link rel="icon" type="image/png" href="/images/mark.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #10162d;
+        --brand: #3e5caa;
+        --aqua: #4f9b99;
+        --ink: #1c1f2a;
+        --muted: #5b6472;
+        --line: #e5e8f0;
+        --bg-soft: #f6f8fc;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+        color: var(--ink);
+        line-height: 1.75;
+        background: #fff;
+      }
+      h1, h2, h3 { font-family: 'Sora', 'Inter', sans-serif; line-height: 1.25; }
+      .wrap { max-width: 50rem; margin: 0 auto; padding: 0 1.25rem; }
+      header.hero {
+        background: linear-gradient(135deg, var(--navy) 0%, #1a2447 60%, #10162d 100%);
+        color: #fff;
+        padding: 3.5rem 0 3rem;
+        border-bottom: 4px solid var(--aqua);
+      }
+      .badge {
+        display: inline-flex; align-items: center; gap: .5rem;
+        font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+        color: #9fd8d6; border: 1px solid rgba(255,255,255,.25);
+        padding: .35rem .9rem; border-radius: 999px; margin-bottom: 1.25rem;
+      }
+      .badge::before { content: ''; width: .45rem; height: .45rem; border-radius: 50%; background: var(--aqua); }
+      header.hero h1 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); margin: 0 0 1rem; }
+      header.hero p.lead { max-width: 42rem; color: rgba(255,255,255,.82); font-size: 1.05rem; margin: 0; }
+      .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+      .btn {
+        display: inline-flex; align-items: center; gap: .4rem;
+        font-weight: 600; font-size: .95rem; text-decoration: none;
+        padding: .8rem 1.5rem; border-radius: 999px; transition: all .2s;
+      }
+      .btn-aqua { background: var(--aqua); color: #0c1226; }
+      .btn-aqua:hover { background: #fff; }
+      .btn-ghost { border: 1px solid rgba(255,255,255,.35); color: #fff; }
+      .btn-ghost:hover { background: rgba(255,255,255,.12); }
+      .btn-brand { background: var(--brand); color: #fff; }
+      .btn-brand:hover { background: #2c4480; }
+      main { padding: 2.5rem 0 1rem; }
+      h2 { font-size: 1.45rem; color: var(--navy); margin: 2.75rem 0 .9rem; }
+      h2:first-child { margin-top: .5rem; }
+      h3 { font-size: 1.08rem; color: var(--brand); margin: 1.75rem 0 .5rem; }
+      p { margin: .65rem 0; }
+      a { color: var(--brand); }
+      .tip-grid { display: grid; gap: 1rem; margin: 1.25rem 0; }
+      @media (min-width: 640px) { .tip-grid { grid-template-columns: repeat(3, 1fr); } }
+      .tip {
+        border: 1px solid var(--line); border-radius: 1rem; padding: 1.1rem 1.2rem;
+        background: var(--bg-soft);
+      }
+      .tip strong { display: block; color: var(--navy); font-family: 'Sora', sans-serif; margin-bottom: .3rem; }
+      .steps { counter-reset: adim; list-style: none; padding: 0; margin: 1.25rem 0; }
+      .steps li {
+        counter-increment: adim; position: relative;
+        padding: .85rem 1rem .85rem 3.4rem; margin-bottom: .6rem;
+        border: 1px solid var(--line); border-radius: .9rem;
+      }
+      .steps li::before {
+        content: counter(adim); position: absolute; left: 1rem; top: .8rem;
+        width: 1.7rem; height: 1.7rem; border-radius: 50%;
+        background: var(--brand); color: #fff; font-weight: 700;
+        display: grid; place-items: center; font-size: .9rem;
+      }
+      ul.dash { padding-left: 1.3rem; }
+      ul.dash li { margin: .35rem 0; }
+      .not-box {
+        border-left: 4px solid var(--aqua); background: var(--bg-soft);
+        padding: .9rem 1.2rem; border-radius: 0 .8rem .8rem 0; margin: 1.25rem 0;
+        font-size: .95rem;
+      }
+      details {
+        border: 1px solid var(--line); border-radius: .9rem;
+        padding: .9rem 1.2rem; margin-bottom: .7rem; background: #fff;
+      }
+      details summary { cursor: pointer; font-weight: 600; color: var(--navy); font-family: 'Sora', sans-serif; }
+      details p { margin: .6rem 0 .1rem; color: var(--muted); }
+      .contact-band {
+        background: var(--navy); color: #fff; border-radius: 1.25rem;
+        padding: 1.75rem 1.5rem; margin: 3rem 0 1rem; text-align: center;
+      }
+      .contact-band h2 { color: #fff; margin: 0 0 .5rem; }
+      .contact-band p { color: rgba(255,255,255,.75); margin: .3rem 0; }
+      footer.site { border-top: 1px solid var(--line); margin-top: 3rem; padding: 1.5rem 0 2.5rem; font-size: .85rem; color: var(--muted); }
+      footer.site nav a { margin-right: 1rem; }
+    </style>
+
+    <!-- SSS yapısal verisi -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "KamuKent parsel sorgulama nasıl yapılır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Berra Proje ve İnşaat web sitesindeki KamuKent bölümüne ada ve parsel numaranızı girerek Mordoğan'daki parselinizin 2.5 kat A tipi, 2.5 kat B tipi veya 3.5 katlı mimariye sahip olup olmadığını ücretsiz öğrenebilirsiniz."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "KamuKent parselim kaç katlı?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "KamuKent parselleri üç gruptur: 2.5 kat A tipi mimari, 2.5 kat B tipi mimari ve 3.5 katlı mimari. Ada ve parsel numarasına göre parselinizin hangi grupta olduğu sorgulanabilir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "KamuKent 2.5 kat A tipi ile B tipi arasındaki fark nedir?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "İki tip arasındaki fark yalnızca mimari projededir. Ruhsat aşamasında istenen belgeler, harçlar ve ödemeler 2.5 kat A tipi ile 2.5 kat B tipi için aynıdır."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "KamuKent'te ruhsat için hangi ödemeler gerekiyor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Proje müellifleri ödemeleri (mühendis taahhüt ve tasdik bedelleri), yaklaşık 80.000-100.000 TL arası yıllık şantiye şefi ücreti, numarataj krokisi ve belgesi için belediye harcı ile İZSU tarafından hesaplanan kanal katılım bedeli (ortalama 100.000 TL civarı) ana kalemlerdir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "KamuKent'te anahtar teslim inşaat fiyatı ne kadar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fiyat; parselin imar durumu, bodrumlu/bodrumsuz olması ve seçilen teslim seviyesine (kaba, ileri kaba, anahtar teslim) göre belirlenir. Güncel teklif için ada ve parsel numaranızla teklif formunu doldurmanız yeterlidir."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <span class="badge">S.S. KamuKent Arsa ve Konut Yapı Kooperatifi</span>
+        <h1>KamuKent Parsel Sorgulama — Karaburun / Mordoğan</h1>
+        <p class="lead">
+          KamuKent'teki arsanız kaç katlı? Ada ve parsel numaranızı girin; parselinizin
+          <strong>2.5 kat A tipi</strong>, <strong>2.5 kat B tipi</strong> veya
+          <strong>3.5 katlı</strong> mimariye sahip olup olmadığını saniyeler içinde öğrenin.
+          Ruhsat evraklarını inceleyin, ödemeleri görün, teklif alın.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-aqua" href="/#kamukent">Parselinizi Sorgulayın</a>
+          <a class="btn btn-ghost" href="/#kamukent-teklif">Teklif Alın</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <h2>KamuKent parseliniz kaç katlı?</h2>
+      <p>
+        KamuKent (Karaburun / Mordoğan) parselleri üç mimari gruba ayrılmıştır. Parsel
+        numaranıza göre arsanızın hangi grupta olduğu belirlenir:
+      </p>
+      <div class="tip-grid">
+        <div class="tip">
+          <strong>2.5 Kat — A Tipi</strong>
+          A grubu parsellerde uygulanan mimari projedir. Ruhsat evrakları ve harçlar B tipi ile aynıdır.
+        </div>
+        <div class="tip">
+          <strong>2.5 Kat — B Tipi</strong>
+          B grubu parsellerde uygulanan mimari projedir. Ruhsat aşamasında istenen belgeler A tipi ile aynıdır.
+        </div>
+        <div class="tip">
+          <strong>3.5 Kat</strong>
+          C grubu parsellerde uygulanan, ek kat imkânı sağlayan mimari projedir; ruhsat evrak listesi farklıdır.
+        </div>
+      </div>
+      <div class="not-box">
+        <strong>Önemli:</strong> 2.5 kat A tipi ile 2.5 kat B tipi arasındaki fark yalnızca
+        mimari projededir; ruhsatta istenen belgeler, harçlar ve ödemeler ikisi için de aynıdır.
+      </div>
+
+      <h2>Parsel sorgulama nasıl çalışır?</h2>
+      <ol class="steps">
+        <li><strong>Ada ve parsel numaranızı girin</strong> — il ve ilçe (İzmir / Karaburun) otomatik gelir.</li>
+        <li><strong>İmar durumunuzu görün</strong> — parselinizin 2.5 kat A, 2.5 kat B veya 3.5 kat olduğu anında listelenir.</li>
+        <li><strong>Ruhsat rehberini inceleyip teklif alın</strong> — evrak listeleri, harçlar ve teslim seviyeleriyle birlikte.</li>
+      </ol>
+      <p>
+        Sorgu, Mordoğan Mahallesi parselasyon verisi üzerinden çalışır ve ücretsizdir:
+        <a href="/#kamukent">KamuKent parsel sorgulama aracına git →</a>
+      </p>
+
+      <h2>Ruhsat aşamasında neler isteniyor?</h2>
+      <p>
+        KamuKent'te yapı ruhsatı almak için istenen belgeler kat imarına göre değişir.
+        Berra Proje ve İnşaat olarak ruhsat başvurusundan yapı kullanma iznine kadar
+        tüm evrak ve ödeme takibini sizin adınıza yürütüyoruz.
+      </p>
+      <h3>2.5 kat (A ve B tipi) için</h3>
+      <ul class="dash">
+        <li>Mimari, statik, elektrik ve makine projeleri ile proje müellif taahhütnameleri</li>
+        <li>Mimari müellif muvafakatnamesi</li>
+        <li>Proje müellifleri ödemeleri (mühendis taahhüt ve tasdik bedelleri)</li>
+        <li>Yıllık şantiye şefi ücreti (yaklaşık 80.000 – 100.000 TL)</li>
+        <li>Numarataj krokisi ve belgesi (belediye harcı)</li>
+        <li>İZSU kanal katılım belgesi (İZSU hesaplar; ortalama 100.000 TL civarı)</li>
+      </ul>
+      <h3>3.5 kat için</h3>
+      <p>
+        3.5 katlı parsellerde ek kat nedeniyle farklılaşan evrak listesi ve ödemeler sitedeki
+        ruhsat rehberinde ayrıntılı olarak yer alır:
+        <a href="/#kamukent-ruhsat">3.5 kat ruhsat rehberini inceleyin →</a>
+      </p>
+
+      <h2>KamuKent'te sunduğumuz hizmetler</h2>
+      <ul class="dash">
+        <li><strong>Betonarme proje müellifliği</strong> — S.S. KamuKent Arsa ve Konut Yapı Kooperatifi konut projelerinde taşıyıcı sistem projelerinin hazırlanması ve onay süreçlerinin müellif sıfatıyla yürütülmesi</li>
+        <li><strong>Fenni mesul görevi</strong> — şantiye süresince imalat denetimi ve tutanak takibi</li>
+        <li><strong>Kaba, ileri kaba ve anahtar teslim inşaat</strong> — bims blok duvar, projesine uygun çatı imalatı; ileri kabadan kapı ve doğrama hariç</li>
+        <li><strong>Yapı ruhsatı ve yapı kullanma (iskân) aşamaları</strong> — başvuru, evrak ve harç takibinin tamamı</li>
+        <li><strong>Enerji Kimlik Belgesi (EKB)</strong> — yasal zorunluluk olan belgenin düzenlenmesi</li>
+      </ul>
+      <p>
+        Bugüne kadar <strong>123 adet</strong> kaba inşaat, ileri kaba inşaat ve anahtar teslim
+        inşaat teslim edilmiştir. Kapsamları incelemek için:
+        <a href="/#teklifler">teklif şablonlarına göz atın →</a>
+      </p>
+
+      <h2>Sık sorulan sorular</h2>
+      <details>
+        <summary>KamuKent parsel sorgulama ücretli mi?</summary>
+        <p>Hayır, tamamen ücretsizdir. Ada ve parsel numaranızı girmeniz yeterli; sonuç anında görüntülenir.</p>
+      </details>
+      <details>
+        <summary>KamuKent parselim kaç katlı çıkacak?</summary>
+        <p>Parsel numaranıza göre 2.5 kat A tipi, 2.5 kat B tipi veya 3.5 katlı mimari olmak üzere üç durumdan biri geçerlidir.</p>
+      </details>
+      <details>
+        <summary>2.5 kat A tipi ile B tipi farkı ne, ödemeler değişiyor mu?</summary>
+        <p>Fark yalnızca mimari projededir. Ruhsat evrakları, harçlar ve ödemeler her iki tip için de aynıdır.</p>
+      </details>
+      <details>
+        <summary>Ruhsat için toplamda ne kadar ödeme yapacağım?</summary>
+        <p>Proje müllif ödemeleri, yıllık şantiye şefi ücreti (yaklaşık 80.000 – 100.000 TL), numarataj harcı ve İZSU kanal katılım bedeli (ortalama 100.000 TL civarı) ana kalemlerdir. Parselinize ve kat imarınıza göre güncel döküm için bize ulaşın.</p>
+      </details>
+      <details>
+        <summary>KamuKent'te anahtar teslim inşaat ne kadar sürer, fiyatı nedir?</summary>
+        <p>Süre ve fiyat parselin imar durumuna, bodrumlu/bodrumsuz olmasına ve seçilen teslim seviyesine göre belirlenir. Teklif formuna ada/parsel bilginizi girerseniz size özel plan çıkarılır.</p>
+      </details>
+
+      <div class="contact-band">
+        <h2>Parselinizi sorgulamaya hazır mısınız?</h2>
+        <p>Ada ve parsel numaranızla 30 saniyede imar durumunuzu öğrenin.</p>
+        <p>Kazım Karabekir Cad. No: 28, Mordoğan Mah. Karaburun / İzmir · 0533 818 29 31 · info@berramuhendislik.com</p>
+        <div class="cta-row" style="justify-content:center;">
+          <a class="btn btn-aqua" href="/#kamukent">Parsel Sorgula</a>
+          <a class="btn btn-brand" href="/#iletisim">Bize Ulaşın</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <nav>
+          <a href="/">Anasayfa</a>
+          <a href="/#hizmetler">Hizmetler</a>
+          <a href="/#teklifler">Teklifler</a>
+          <a href="/#iletisim">İletişim</a>
+          <a href="/gizlilik.html">Gizlilik Politikası</a>
+        </nav>
+        <p>© 2026 Berra Proje ve İnşaat — Karaburun / İzmir</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -22,7 +22,13 @@
 Mordoğan Mahallesi (Karaburun / İzmir) için ada ve parsel numarası girilerek
 parselin 2.5 kat A tipi, 2.5 kat B tipi veya 3.5 katlı mimariye sahip olup
 olmadığı sorgulanabilir; ruhsat evrakları, ödemeler ve teklif şablonları
-incelenebilir.
+incelenebilir. Detaylı sayfa: https://berrayapi.com/kamukent.html
+
+## Sayfalar
+
+- https://berrayapi.com/ — Ana sayfa: hizmetler, KamuKent parsel sorgusu, teklif şablonları, iletişim
+- https://berrayapi.com/kamukent.html — KamuKent parsel sorgulama odak sayfası (SSS dahil)
+- https://berrayapi.com/gizlilik.html — Gizlilik politikası
 
 ## İletişim
 
