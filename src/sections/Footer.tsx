@@ -44,6 +44,7 @@ export default function Footer() {
               <li><a href="/iletisim.html" className="text-white/70 transition-colors hover:text-brand-aqua">İletişim</a></li>
               <li><a href="/kamukent.html" className="text-white/70 transition-colors hover:text-brand-aqua">KamuKent Parsel Sorgulama</a></li>
               <li><a href="/gizlilik.html" className="text-white/70 transition-colors hover:text-brand-aqua">Gizlilik Politikası</a></li>
+              <li><a href="/privacy.html" className="text-white/70 transition-colors hover:text-brand-aqua">Privacy Policy</a></li>
             </ul>
           </div>
 
