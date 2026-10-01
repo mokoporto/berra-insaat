@@ -4,13 +4,12 @@ import { WHATSAPP_URL } from '@/lib/whatsapp'
  * Tüm sayfalarda sağ altta görünen yüzen WhatsApp butonu.
  * Tıklanınca ziyaretçinin WhatsApp'ında hazır mesajla sohbet açılır.
  */
-export function WhatsAppFloat({ label = "WhatsApp'tan yazın" }: { label?: string }) {
+export function WhatsAppFloat() {
   return (
     <a
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={label}
       className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full bg-[#25D366] px-4 py-3.5 text-white shadow-lg shadow-emerald-900/30 transition hover:scale-105 hover:bg-[#1fb457] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
     >
       <WhatsAppIcon className="h-6 w-6 shrink-0" />
