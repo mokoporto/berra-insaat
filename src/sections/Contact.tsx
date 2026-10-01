@@ -8,6 +8,8 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { CONTACT } from '@/lib/site'
 import { sendForm } from '@/lib/form'
+import { WHATSAPP_URL } from '@/lib/whatsapp'
+import { WhatsAppIcon } from '@/components/WhatsAppFloat'
 
 const INFO = [
   { icon: MapPin, label: 'Adres', value: CONTACT.address },
@@ -77,6 +79,27 @@ export default function Contact() {
                 </Reveal>
               ))}
             </div>
+
+            <Reveal delay={350}>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-10 flex items-center gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-5 transition hover:border-emerald-300 hover:bg-emerald-100/70"
+              >
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[#25D366] text-white">
+                  <WhatsAppIcon className="h-6 w-6" />
+                </span>
+                <span>
+                  <span className="block font-semibold text-neutral-900">
+                    WhatsApp'tan Sorun
+                  </span>
+                  <span className="block text-sm text-neutral-600">
+                    Sorularınızı yazın, hemen yanıtlayalım — 0533 818 29 31
+                  </span>
+                </span>
+              </a>
+            </Reveal>
           </div>
 
           {/* Sağ: form */}

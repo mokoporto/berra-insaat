@@ -9,6 +9,7 @@ import Teklifler from '@/sections/Teklifler'
 import Process from '@/sections/Process'
 import Contact from '@/sections/Contact'
 import Footer from '@/sections/Footer'
+import { WhatsAppFloat } from '@/components/WhatsAppFloat'
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </>
   )
 }
