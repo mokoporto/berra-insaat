@@ -201,9 +201,9 @@ def build(t: dict):
     val = ParagraphStyle("val", fontName="Arial", fontSize=9.5, textColor=colors.HexColor("#1C1F2A"))
     fiyat = Table(
         [
-            [Paragraph("Birim Fiyat", lbl), Paragraph("Güncel fiyat bilgisi için lütfen iletişime geçiniz.", val)],
-            [Paragraph("Toplam Bedel", lbl), Paragraph("Arsa ve proje özelliklerine göre belirlenir.", val)],
-            [Paragraph("Ödeme Planı", lbl), Paragraph("Hakediş esnekliği ile projeye göre planlanır.", val)],
+            [Paragraph("Birim Fiyat", lbl), Paragraph("Fiyat sorunuz.", val)],
+            [Paragraph("Toplam Bedel", lbl), Paragraph("Fiyat sorunuz.", val)],
+            [Paragraph("Ödeme Planı", lbl), Paragraph("Fiyat sorunuz.", val)],
         ],
         colWidths=[35 * mm, 135 * mm],
     )
@@ -216,6 +216,10 @@ def build(t: dict):
         ),
         Paragraph("Yatırım ve Ödeme Koşulları", fiyat_head),
         fiyat,
+        Paragraph(
+            "Güncel fiyat ve ödeme koşulları için: 0533 818 29 31 • WhatsApp • info@berramuhendislik.com",
+            ParagraphStyle("fiyatnot", fontName="Arial", fontSize=8.5, textColor=BRAND, spaceBefore=6, leading=12),
+        ),
         Spacer(1, 10),
         HRFlowable(width="100%", thickness=0.6, color=colors.HexColor("#D6DCEA"), spaceBefore=6, spaceAfter=6),
         Paragraph(CONTACT_LINE, ParagraphStyle("foot", fontName="Arial", fontSize=8, textColor=MUTED, leading=11)),
