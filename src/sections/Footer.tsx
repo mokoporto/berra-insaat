@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-neutral-950 text-white">
       <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
-        <div className="grid gap-12 md:grid-cols-4">
+        <div className="grid gap-12 md:grid-cols-3 lg:grid-cols-5">
           {/* Marka */}
           <div className="md:col-span-2">
             <a href="#anasayfa" className="inline-flex items-center">
@@ -33,6 +33,17 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Sayfalar */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40">Sayfalar</h4>
+            <ul className="mt-5 space-y-3 text-sm">
+              <li><a href="/hakkimizda.html" className="text-white/70 transition-colors hover:text-brand-aqua">Hakkımızda</a></li>
+              <li><a href="/iletisim.html" className="text-white/70 transition-colors hover:text-brand-aqua">İletişim</a></li>
+              <li><a href="/kamukent.html" className="text-white/70 transition-colors hover:text-brand-aqua">KamuKent Parsel Sorgulama</a></li>
+              <li><a href="/gizlilik.html" className="text-white/70 transition-colors hover:text-brand-aqua">Gizlilik Politikası</a></li>
             </ul>
           </div>
 

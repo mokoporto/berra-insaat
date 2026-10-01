@@ -20,15 +20,17 @@
 ## KamuKent Parsel Sorgusu
 
 Mordoğan Mahallesi (Karaburun / İzmir) için ada ve parsel numarası girilerek
-parselin 2.5 kat A tipi, 2.5 kat B tipi veya 3.5 katlı mimariye sahip olup
-olmadığı sorgulanabilir; ruhsat evrakları, ödemeler ve teklif şablonları
-incelenebilir. Detaylı sayfa: https://berrayapi.com/kamukent.html
+parselin A tipi (2.5 kat), B tipi (2.5 kat) veya C tipi (3.5 kat) mimariye sahip
+olup olmadığı sorgulanabilir; ruhsat evrakları, ödemeler ve teklif şablonları
+incelenebilir.
 
 ## Sayfalar
 
-- https://berrayapi.com/ — Ana sayfa: hizmetler, KamuKent parsel sorgusu, teklif şablonları, iletişim
-- https://berrayapi.com/kamukent.html — KamuKent parsel sorgulama odak sayfası (SSS dahil)
-- https://berrayapi.com/gizlilik.html — Gizlilik politikası
+- [Ana sayfa](https://berrayapi.com/) — hizmetler, KamuKent parsel sorgusu, teklif şablonları, iletişim
+- [KamuKent parsel sorgulama](https://berrayapi.com/kamukent.html) — odak sayfa: parsel haritası, 117 adalık liste, 9 soruluk SSS
+- [Hakkımızda](https://berrayapi.com/hakkimizda.html) — firma tanıtımı, KamuKent'teki rolümüz, çalışma anlayışımız
+- [İletişim](https://berrayapi.com/iletisim.html) — adres, telefon, WhatsApp, e-posta, formlar
+- [Gizlilik Politikası](https://berrayapi.com/gizlilik.html) — KVKK, çerezler, veri sahibi hakları
 
 ## İletişim
 
