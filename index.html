@@ -87,6 +87,20 @@
         ]
       }
     </script>
+    <!-- Açılış: stil dosyası yüklenene kadar biçimsiz içerik gösterme; marka uyumlu bekleme ekranı -->
+    <style>
+      body { background: #10162d; }
+      #root > main { display: none; }
+      .boot {
+        position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+        color: #d97706; background: #10162d;
+        font-family: Sora, system-ui, -apple-system, sans-serif;
+        font-weight: 700; letter-spacing: 0.35em; font-size: 15px;
+        animation: bootpulse 1.4s ease-in-out infinite;
+      }
+      @keyframes bootpulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) { .boot { animation: none; opacity: 1; } }
+    </style>
   </head>
   <body>
     <!--
@@ -94,6 +108,8 @@
       Uygulama yüklendiğinde React bu içeriği etkileşimli sürümle değiştirir.
     -->
     <div id="root">
+      <div class="boot" aria-hidden="true">BERRA</div>
+      <noscript><style>.boot{display:none!important}#root > main{display:block!important}</style></noscript>
       <main>
         <h1>Berra Proje ve İnşaat — Sağlam projeler, güvenli yapılar.</h1>
         <p>
