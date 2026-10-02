@@ -116,3 +116,9 @@
 ::selection {
   background: rgb(62 92 170 / 0.18);
 }
+/* Mobil: animasyon süresini kısalt, açılışı hızlandır */
+@media (pointer: coarse) {
+  .reveal {
+    transition-duration: 0.45s;
+  }
+}

@@ -1,3 +1,11 @@
 #root {
   min-height: 100vh;
+  min-height: 100svh;
+}
+
+/* Hero: mobil tarayıcılarda adres çubuğu kaybolurken titremeyi önlemek için
+   küçük görünüm alanı birimi (svh); eski tarayıcılar vh'ye düşer. */
+.hero-min {
+  min-height: 100vh;
+  min-height: 100svh;
 }

@@ -6,13 +6,13 @@ export default function Hero() {
   return (
     <section
       id="anasayfa"
-      className="relative flex min-h-screen items-end overflow-hidden bg-neutral-950"
+      className="hero-min relative flex items-end overflow-hidden bg-neutral-950"
     >
       {/* Marka gradyan arka plan */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-navy via-neutral-950 to-neutral-950" />
-        <div className="absolute -left-40 top-1/4 h-[34rem] w-[34rem] rounded-full bg-brand/25 blur-[140px]" />
-        <div className="absolute -right-32 bottom-0 h-[28rem] w-[28rem] rounded-full bg-brand-aqua/15 blur-[140px]" />
+        <div className="absolute -left-40 top-1/4 h-[18rem] w-[18rem] transform-gpu rounded-full bg-brand/25 blur-[70px] sm:h-[34rem] sm:w-[34rem] sm:blur-[140px]" />
+        <div className="absolute -right-32 bottom-0 h-[14rem] w-[14rem] transform-gpu rounded-full bg-brand-aqua/15 blur-[60px] sm:h-[28rem] sm:w-[28rem] sm:blur-[140px]" />
       </div>
 
       {/* Büyük logo işareti (filigran) */}
