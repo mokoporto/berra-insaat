@@ -11,6 +11,18 @@ export default {
       return response;
     }
 
+    // HEAD gibi gövdesiz yanıtlarda hash boş çıkar; ETag üretme.
+    if (request.method !== "GET") {
+      const headers = new Headers(response.headers);
+      headers.set("Cache-Control", "public, max-age=600, must-revalidate");
+      headers.set("X-Berra-Worker", "v1");
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers,
+      });
+    }
+
     const body = await response.arrayBuffer();
     const digest = await crypto.subtle.digest("SHA-256", body);
     const hash = Array.from(new Uint8Array(digest))
@@ -21,6 +33,7 @@ export default {
     const headers = new Headers(response.headers);
     headers.set("Cache-Control", "public, max-age=600, must-revalidate");
     headers.set("ETag", `"${hash}"`);
+    headers.set("X-Berra-Worker", "v1");
 
     return new Response(body, {
       status: response.status,
