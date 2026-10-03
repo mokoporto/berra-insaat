@@ -1,6 +1,9 @@
 // Berra İnşaat — Cloudflare Worker
 // Statik varlıkları (Static Assets) servis eder ve HTML yanıtlarına
-// önbellek başlıkları (Cache-Control + ETag) ekler.
+// önbellek başlıkları (Cache-Control + ETag + Last-Modified) ekler.
+
+// İçerik güncellendiğinde bu tarihi de güncelle.
+const LAST_MODIFIED = "Fri, 03 Oct 2026 00:00:00 GMT";
 
 export default {
   async fetch(request, env) {
@@ -31,6 +34,7 @@ export default {
     const headers = new Headers(assetResponse.headers);
     headers.set("Cache-Control", "public, max-age=600, must-revalidate");
     headers.set("ETag", `"${hash}"`);
+    headers.set("Last-Modified", LAST_MODIFIED);
     headers.set("X-Berra-Worker", "v1");
 
     return new Response(isHead ? null : body, {
