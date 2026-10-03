@@ -40,11 +40,11 @@ export default function Footer() {
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40">Sayfalar</h4>
             <ul className="mt-5 space-y-3 text-sm">
-              <li><a href="/hakkimizda.html" className="text-white/70 transition-colors hover:text-brand-aqua">Hakkımızda</a></li>
-              <li><a href="/iletisim.html" className="text-white/70 transition-colors hover:text-brand-aqua">İletişim</a></li>
-              <li><a href="/kamukent.html" className="text-white/70 transition-colors hover:text-brand-aqua">KamuKent Parsel Sorgulama</a></li>
-              <li><a href="/gizlilik.html" className="text-white/70 transition-colors hover:text-brand-aqua">Gizlilik Politikası</a></li>
-              <li><a href="/privacy.html" className="text-white/70 transition-colors hover:text-brand-aqua">Privacy Policy</a></li>
+              <li><a href="/hakkimizda" className="text-white/70 transition-colors hover:text-brand-aqua">Hakkımızda</a></li>
+              <li><a href="/iletisim" className="text-white/70 transition-colors hover:text-brand-aqua">İletişim</a></li>
+              <li><a href="/kamukent" className="text-white/70 transition-colors hover:text-brand-aqua">KamuKent Parsel Sorgulama</a></li>
+              <li><a href="/gizlilik" className="text-white/70 transition-colors hover:text-brand-aqua">Gizlilik Politikası</a></li>
+              <li><a href="/privacy" className="text-white/70 transition-colors hover:text-brand-aqua">Privacy Policy</a></li>
             </ul>
           </div>
 
@@ -73,7 +73,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-5">
             <a
-              href="/gizlilik.html"
+              href="/gizlilik"
               className="text-xs text-white/40 transition hover:text-brand-aqua"
             >
               Gizlilik Politikası

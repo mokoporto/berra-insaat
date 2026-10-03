@@ -100,7 +100,7 @@ export default function KamuKent() {
           </p>
           <p className="mt-4">
             <a
-              href="/kamukent.html"
+              href="/kamukent"
               className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/5 px-5 py-2.5 text-sm font-semibold text-brand transition hover:bg-brand/10"
             >
               KamuKent parsel sorgulama rehberi ve sık sorulan sorular →
