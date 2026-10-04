@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KamuKent Parsel Sorgulama Aracı Yayında | Berra İnşaat</title>
-    <meta name="description" content="Mordoğan / Karaburun KamuKent'teki 1.148 parsel için ada/parsel bazlı ücretsiz kat sorgulama aracı yayına alındı. 2.5 kat A, 2.5 kat B ve 3.5 kat imarını saniyeler içinde öğrenin." />
+    <meta name="description" content="KamuKent'teki 1.148 parsel için ücretsiz ada/parsel bazlı kat sorgulama aracı yayında. 2.5 kat A, 2.5 kat B ve 3.5 kat imarını öğrenin." />
     <link rel="preload" as="style" href="/fonts/fonts.css" />
     <link href="/fonts/fonts.css" rel="stylesheet" />
     <link rel="canonical" href="https://berrayapi.com/kamukent-haberler/parsel-sorgulama-yayinda" />
@@ -19,11 +19,11 @@
     <meta property="og:locale" content="tr_TR" />
     <meta property="og:url" content="https://berrayapi.com/kamukent-haberler/parsel-sorgulama-yayinda" />
     <meta property="og:title" content="KamuKent Parsel Sorgulama Aracı Yayında | Berra İnşaat" />
-    <meta property="og:description" content="Mordoğan / Karaburun KamuKent'teki 1.148 parsel için ada/parsel bazlı ücretsiz kat sorgulama aracı yayına alındı. 2.5 kat A, 2.5 kat B ve 3.5 kat imarını saniyeler içinde öğrenin." />
+    <meta property="og:description" content="KamuKent'teki 1.148 parsel için ücretsiz ada/parsel bazlı kat sorgulama aracı yayında. 2.5 kat A, 2.5 kat B ve 3.5 kat imarını öğrenin." />
     <meta property="og:image" content="https://berrayapi.com/images/og-image.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="KamuKent Parsel Sorgulama Aracı Yayında | Berra İnşaat" />
-    <meta name="twitter:description" content="Mordoğan / Karaburun KamuKent'teki 1.148 parsel için ada/parsel bazlı ücretsiz kat sorgulama aracı yayına alındı. 2.5 kat A, 2.5 kat B ve 3.5 kat imarını saniyeler içinde öğrenin." />
+    <meta name="twitter:description" content="KamuKent'teki 1.148 parsel için ücretsiz ada/parsel bazlı kat sorgulama aracı yayında. 2.5 kat A, 2.5 kat B ve 3.5 kat imarını öğrenin." />
     <link rel="icon" type="image/png" href="/images/mark.png" />
     <style>
 .breadcrumb{background:var(--bg-soft);border-bottom:1px solid var(--line);font-size:.85rem;padding:.6rem 0;}
@@ -149,11 +149,19 @@ table.cmp td.opt{color:#a06a00;}
       "inLanguage": "tr-TR",
       "datePublished": "2026-10-04",
       "dateModified": "2026-10-04",
+      "image": "https://berrayapi.com/images/og-image.jpg",
       "author": {
-        "@id": "https://berrayapi.com/#isletme"
+        "@type": "Organization",
+        "name": "Berra Proje ve İnşaat",
+        "url": "https://berrayapi.com/#isletme"
       },
       "publisher": {
-        "@id": "https://berrayapi.com/#isletme"
+        "@type": "Organization",
+        "name": "Berra Proje ve İnşaat",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://berrayapi.com/images/logo.png"
+        }
       },
       "mainEntityOfPage": "https://berrayapi.com/kamukent-haberler/parsel-sorgulama-yayinda",
       "about": {
@@ -245,9 +253,9 @@ table.cmp td.opt{color:#a06a00;}
     <input type="hidden" name="_captcha" value="false" />
     <div class="form-grid">
       <div><label for="f-name">Ad Soyad *</label>
-        <input id="f-name" name="Ad Soyad" required placeholder="Adınız Soyadınız" /></div>
+        <input id="f-name" name="Ad Soyad" type="text" autocomplete="name" required placeholder="Adınız Soyadınız" /></div>
       <div><label for="f-phone">Telefon *</label>
-        <input id="f-phone" name="Telefon" type="tel" required placeholder="05XX XXX XX XX" /></div>
+        <input id="f-phone" name="Telefon" type="tel" autocomplete="tel" required placeholder="05XX XXX XX XX" /></div>
       <div><label for="f-ada">Ada No *</label>
         <input id="f-ada" name="Ada No" inputmode="numeric" required placeholder="Örn. 470" /></div>
       <div><label for="f-parsel">Parsel No *</label>

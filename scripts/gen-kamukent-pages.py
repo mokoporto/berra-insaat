@@ -164,9 +164,9 @@ FORM_HTML = f"""
     <input type="hidden" name="_captcha" value="false" />
     <div class="form-grid">
       <div><label for="f-name">Ad Soyad *</label>
-        <input id="f-name" name="Ad Soyad" required placeholder="Adınız Soyadınız" /></div>
+        <input id="f-name" name="Ad Soyad" type="text" autocomplete="name" required placeholder="Adınız Soyadınız" /></div>
       <div><label for="f-phone">Telefon *</label>
-        <input id="f-phone" name="Telefon" type="tel" required placeholder="05XX XXX XX XX" /></div>
+        <input id="f-phone" name="Telefon" type="tel" autocomplete="tel" required placeholder="05XX XXX XX XX" /></div>
       <div><label for="f-ada">Ada No *</label>
         <input id="f-ada" name="Ada No" inputmode="numeric" required placeholder="Örn. 470" /></div>
       <div><label for="f-parsel">Parsel No *</label>
@@ -436,8 +436,8 @@ insaat_content = """
       <h2>Şantiyelerimizden görüntüler</h2>
       <p>Tamamlanan ve devam eden yapılarımızdan örnekler:</p>
       <div class="galeri">
-        <figure><img src="/images/projects/proje-01.webp" alt="KamuKent bölgesinde teslim edilen yapının betonarme kaba inşaatı" loading="lazy" width="1600" height="720" /></figure>
-        <figure><img src="/images/projects/proje-06.webp" alt="Mordoğan'da ileri kaba inşaat aşamasındaki villa şantiyesi" loading="lazy" width="1600" height="900" /></figure>
+        <figure><img src="/images/projects/proje-01.webp" alt="KamuKent bölgesinde teslim edilen yapının betonarme kaba inşaatı" loading="lazy" width="1200" height="540" /></figure>
+        <figure><img src="/images/projects/proje-06.webp" alt="Mordoğan'da ileri kaba inşaat aşamasındaki villa şantiyesi" loading="lazy" width="1200" height="675" /></figure>
         <figure><img src="/images/projects/proje-08.webp" alt="Karaburun'da tamamlanan anahtar teslim konut" loading="lazy" width="1600" height="900" /></figure>
         <figure><img src="/images/projects/proje-17.webp" alt="KamuKent şantiyesinde bims blok duvar imalatı" loading="lazy" width="1600" height="900" /></figure>
       </div>
@@ -450,9 +450,8 @@ insaat_content = """
 page_insaat = page(
     slug="kamukent-insaat",
     title="Kamukent İnşaat Firması | Kaba, İleri Kaba, Anahtar Teslim – Berra",
-    description=("KamuKent'te (Mordoğan / Karaburun) 2.5 kat A-B ve 3.5 kat C tipi parseller için kaba, "
-                 "ileri kaba ve anahtar teslim inşaat. 7 aşamalı iş programı, 120 gün, aşamalı ödeme, "
-                 "SGK firmada, TSE malzemeler, 15 yıl taşıyıcı sistem sorumluluğu. 1 dk'da teklif alın."),
+    description=("KamuKent'te kaba, ileri kaba ve anahtar teslim inşaat: 7 aşamalı iş programı, 120 gün, "
+                 "aşamalı ödeme, SGK firmada, TSE malzeme, 15 yıl sorumluluk. 1 dk'da teklif alın."),
     badge="KamuKent üyelerine özel",
     h1="KamuKent İnşaat — Kaba, İleri Kaba ve Anahtar Teslim",
     lead=("KamuKent'te arsanıza müteahhit arıyorsanız doğru yerdesiniz: 2.5 kat A/B ve 3.5 kat C tipi "
@@ -543,9 +542,8 @@ arsa_content = """
 page_arsa = page(
     slug="kamukent-arsa",
     title="Kamukent'te Arsa Alınır mı? Arsa Fiyatları ve Dikkat Edilecekler (2026)",
-    description=("KamuKent'te (Mordoğan / Karaburun) arsa alım rehberi: 117 ada, 1.148 parsel "
-                 "(A 508, B 117, C 523). Alırken kontrol listesi, toplam maliyet kalemleri ve arsa "
-                 "fiyatları hakkında güncel bilgi. Parselinizi ücretsiz sorgulayın."),
+    description=("KamuKent'te arsa alım rehberi: 117 ada, 1.148 parsel (A 508, B 117, C 523). "
+                 "Kontrol listesi, toplam maliyet kalemleri ve ücretsiz parsel sorgulama."),
     badge="KamuKent Arsa Rehberi",
     h1="KamuKent'te Arsa Alınır mı? Fiyatlar ve Dikkat Edilecekler",
     lead=("KamuKent (Mordoğan / Karaburun) 117 ada ve 1.148 parselle İzmir'in en organize "
@@ -661,9 +659,8 @@ RUHSAT_FAQS = [
 page_ruhsat = page(
     slug="kamukent-ruhsat",
     title="Kamukent Ruhsat Süreci 2026: Evraklar, Ücretler ve Süre",
-    description=("KamuKent'te (Mordoğan / Karaburun) yapı ruhsatı: 2.5 kat A/B ve 3.5 kat C tipi "
-                 "parseller için istenen evrak listeleri, proje müellif ödemeleri, şantiye şefi "
-                 "ücreti, numarataj harcı ve İZSU kanal katılım bedeli. Tüm takip bizde."),
+    description=("KamuKent ruhsat süreci: 2.5 kat A/B ve 3.5 kat C tipi parseller için evrak "
+                 "listeleri, ücretler ve adım adım süreç. Tüm evrak ve ödeme takibi Berra'da."),
     badge="KamuKent Ruhsat Rehberi",
     h1="KamuKent Ruhsat Süreci: Evraklar, Ücretler ve Süre",
     lead=("KamuKent'te ruhsat başvurusu kat imarınıza göre değişir. 2.5 kat ve 3.5 kat için istenen "
@@ -698,6 +695,13 @@ haberler_content = """
           <p>2.5 kat ve 3.5 kat parseller için ruhsat evrakları ile güncel ödeme kalemleri rehbere eklendi.</p>
         </a>
       </div>
+      <h2>Öne çıkacak konular</h2>
+      <p>
+        Önümüzdeki dönemde bu sayfada şu başlıklar yer alacak: KamuKent'te 2.5 kat ve
+        3.5 kat ruhsat süreçlerindeki güncellemeler, şantiyelerimizden iş programı
+        ilerlemeleri, teslim edilen yapıların durumu ve arsa değerlendirmelerine ilişkin
+        saha notları. Duyurular bizzat projeleri yürüten mühendis ekibi tarafından yazılır.
+      </p>
       <p class="meta">
         Yeni yazıları kaçırmamak için bizi takip edin:
         <a href="/#iletisim">iletişim sayfasından</a> kaydolabilir veya
@@ -708,9 +712,8 @@ haberler_content = """
 page_haberler = page(
     slug="kamukent-haberler",
     title="Mordoğan Kamukent Son Gelişmeler",
-    description=("Mordoğan / Karaburun KamuKent yerleşimindeki son gelişmeler: parsel sorgulama "
-                 "aracı, ruhsat rehberi güncellemeleri, proje ve inşaat haberleri. Berra Proje ve "
-                 "İnşaat'tan güncel duyurular."),
+    description=("Mordoğan KamuKent'teki son gelişmeler: parsel sorgulama aracı, ruhsat rehberi "
+                 "güncellemeleri, proje ve inşaat haberleri."),
     badge="KamuKent Güncellemeleri",
     h1="Mordoğan Kamukent — Son Gelişmeler",
     lead=("KamuKent'teki parsel, ruhsat ve inşaat gelişmelerini sahada yürüten ekip olarak "
@@ -762,8 +765,13 @@ article_graph = {
     "inLanguage": "tr-TR",
     "datePublished": "2026-10-04",
     "dateModified": "2026-10-04",
-    "author": {"@id": f"{SITE}/#isletme"},
-    "publisher": {"@id": f"{SITE}/#isletme"},
+    "image": f"{SITE}/images/og-image.jpg",
+    "author": {"@type": "Organization", "name": "Berra Proje ve İnşaat", "url": f"{SITE}/#isletme"},
+    "publisher": {
+        "@type": "Organization",
+        "name": "Berra Proje ve İnşaat",
+        "logo": {"@type": "ImageObject", "url": f"{SITE}/images/logo.png"},
+    },
     "mainEntityOfPage": f"{SITE}/kamukent-haberler/parsel-sorgulama-yayinda",
     "about": {"@id": f"{SITE}/#isletme"},
 }
@@ -771,9 +779,8 @@ article_graph = {
 page_article = page(
     slug="kamukent-haberler/parsel-sorgulama-yayinda",
     title="KamuKent Parsel Sorgulama Aracı Yayında | Berra İnşaat",
-    description=("Mordoğan / Karaburun KamuKent'teki 1.148 parsel için ada/parsel bazlı ücretsiz kat "
-                 "sorgulama aracı yayına alındı. 2.5 kat A, 2.5 kat B ve 3.5 kat imarını saniyeler "
-                 "içinde öğrenin."),
+    description=("KamuKent'teki 1.148 parsel için ücretsiz ada/parsel bazlı kat sorgulama aracı "
+                 "yayında. 2.5 kat A, 2.5 kat B ve 3.5 kat imarını öğrenin."),
     badge="KamuKent Haberleri",
     h1="KamuKent Parsel Sorgulama Aracı Yayına Alındı",
     lead=("Mordoğan'daki arsanız kaç katlı? Artık ada ve parsel numaranızı girerek saniyeler içinde, "
