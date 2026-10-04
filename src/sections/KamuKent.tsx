@@ -36,7 +36,8 @@ export default function KamuKent() {
   const [ada, setAda] = useState('')
   const [parsel, setParsel] = useState('')
   const [result, setResult] = useState<QueryResult>(null)
-  const [kat, setKat] = useState<RuhsatKat>('3.5')
+  // Teklif formu sonrası otomatik kat tespiti: null = henüz gönderilmedi
+  const [teklifKat, setTeklifKat] = useState<RuhsatKat | 'notfound' | null>(null)
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
   const [sendError, setSendError] = useState(false)
@@ -61,13 +62,24 @@ export default function KamuKent() {
     setSending(true)
     setSendError(false)
     const data = new FormData(e.currentTarget)
+    // Parselin kat durumu otomatik tespit edilir; müşteri PDF'e yalnızca
+    // formu gönderdikten sonra ulaşır.
+    const r = queryParcel(String(data.get('ada') ?? ''), String(data.get('parsel') ?? ''))
+    const katEtiket =
+      r === '3.5' ? '3.5 Kat (C tipi)' :
+      r === '2.5A' ? '2.5 Kat A tipi' :
+      r === '2.5B' ? '2.5 Kat B tipi' :
+      'Sorguda bulunamadı — ekip teyit edecek'
+    if (r === '3.5') setTeklifKat('3.5')
+    else if (r === '2.5A' || r === '2.5B') setTeklifKat('2.5')
+    else setTeklifKat('notfound')
     const ok = await sendForm(
       {
         'Ad Soyad': data.get('name'),
         Telefon: data.get('phone'),
         'Ada No': data.get('ada'),
         'Parsel No': data.get('parsel'),
-        'Kat İmarı': data.get('kat'),
+        'Kat İmarı (otomatik sorgu)': katEtiket,
         'İnşaat Türü': data.get('type'),
         Mesaj: data.get('message'),
       },
@@ -85,7 +97,6 @@ export default function KamuKent() {
     else if (r === 'notfound') setResult({ kind: 'notfound' })
     else {
       setResult({ kind: 'found', kat: r })
-      setKat(r === '3.5' ? '3.5' : '2.5')
     }
   }
 
@@ -350,27 +361,63 @@ export default function KamuKent() {
                 </div>
                 <div>
                   <h3 className="font-display text-xl font-semibold">1 dk'da Teklif Alın</h3>
-                  <p className="text-sm text-white/60">KamuKent üyelerine özel — teklifinizi indirin veya indirmeden önce inceleyin</p>
+                  <p className="text-sm text-white/60">KamuKent üyelerine özel — formu doldurun; parselinizin kat durumu otomatik tespit edilsin, teklifiniz anında açılsın</p>
                 </div>
               </div>
 
               {sent ? (
-                <div className="flex min-h-64 flex-col items-center justify-center py-10 text-center">
-                  <CheckCircle2 className="h-12 w-12 text-brand-aqua" />
-                  <p className="font-display mt-4 text-xl font-semibold">Teklif talebiniz alındı</p>
-                  <p className="mt-2 max-w-sm text-sm text-white/60">
-                    En kısa sürede sizi arayalım. Acil durumlar için doğrudan telefonumuzu kullanabilirsiniz.
-                  </p>
-                  <a
-                    href={TEKLIF_PDFLERI.find((t) => t.kat === kat)?.file}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-5 inline-flex items-center gap-2 rounded-full border border-brand-aqua/40 px-5 py-2.5 text-sm font-semibold text-brand-aqua transition hover:bg-brand-aqua/10"
-                  >
-                    <Eye className="h-4 w-4" />
-                    {TEKLIF_PDFLERI.find((t) => t.kat === kat)?.title} PDF'ini indirmeden inceleyin
-                  </a>
-                </div>
+                teklifKat && teklifKat !== 'notfound' ? (
+                  <div className="py-8">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-brand-aqua" />
+                      <div>
+                        <p className="font-display text-lg font-semibold">Parseliniz {teklifKat === '3.5' ? '3.5 katlı (C tipi)' : '2.5 katlı (A/B tipi)'} — teklifiniz hazır</p>
+                        <p className="mt-1 text-sm text-white/60">
+                          Talebiniz bize ulaştı; en kısa sürede sizi arıyoruz. Parselinize uygun
+                          fiyat ve teknik teklifi aşağıdan indirebilir veya indirmeden inceleyebilirsiniz.
+                        </p>
+                      </div>
+                    </div>
+                    {(() => {
+                      const t = TEKLIF_PDFLERI.find((x) => x.kat === teklifKat)!
+                      return (
+                        <div className="mt-6 rounded-xl border border-brand-aqua/50 bg-brand-aqua/10 p-5">
+                          <p className="font-display text-base font-semibold">{t.title}</p>
+                          <p className="mt-1.5 text-xs leading-relaxed text-white/55">{t.desc}</p>
+                          <div className="mt-4 flex flex-wrap gap-2">
+                            <a
+                              href={t.file}
+                              download
+                              className="inline-flex items-center gap-1.5 rounded-full bg-brand-aqua px-4 py-2 text-xs font-bold text-neutral-950 transition hover:bg-white"
+                            >
+                              <FileDown className="h-3.5 w-3.5" />
+                              PDF'i İndir
+                            </a>
+                            <a
+                              href={t.file}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold text-white/85 transition hover:border-white/40 hover:text-white"
+                            >
+                              <Eye className="h-3.5 w-3.5" />
+                              İndirmeden Aç
+                            </a>
+                          </div>
+                        </div>
+                      )
+                    })()}
+                  </div>
+                ) : (
+                  <div className="flex min-h-64 flex-col items-center justify-center py-10 text-center">
+                    <CheckCircle2 className="h-12 w-12 text-brand-aqua" />
+                    <p className="font-display mt-4 text-xl font-semibold">Talebiniz alındı</p>
+                    <p className="mt-2 max-w-sm text-sm text-white/60">
+                      Ada/parsel kaydımızda eşleşme bulunamadı; ekibimiz imar durumunuzu teyit
+                      edip en kısa sürede size dönüş yapacak. Acil durumlar için bizi telefonla
+                      arayabilirsiniz.
+                    </p>
+                  </div>
+                )
               ) : (
                 <form
                   onSubmit={handleTeklif}
@@ -391,19 +438,6 @@ export default function KamuKent() {
                   <div className="space-y-2">
                     <Label htmlFor="kk-parsel" className="text-white/80">Parsel No *</Label>
                     <Input id="kk-parsel" name="parsel" required inputMode="numeric" placeholder="Örn. 3" defaultValue={parsel} className="rounded-xl border-white/20 bg-white/10 text-white placeholder:text-white/40" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="kk-kat" className="text-white/80">Kat İmarı</Label>
-                    <select
-                      id="kk-kat"
-                      name="kat"
-                      value={kat}
-                      onChange={(e) => setKat(e.target.value as RuhsatKat)}
-                      className="h-10 w-full rounded-xl border border-white/20 bg-white/10 px-3 text-sm text-white [&>option]:text-neutral-900"
-                    >
-                      <option value="2.5">2.5 Kat</option>
-                      <option value="3.5">3.5 Kat</option>
-                    </select>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="kk-type" className="text-white/80">İnşaat Türü</Label>
@@ -440,65 +474,6 @@ export default function KamuKent() {
                   </Button>
                 </form>
               )}
-
-              {/* Teklif PDF'leri — 1 dk'da teklif */}
-              <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
-                <p className="flex items-center gap-2 text-sm font-semibold text-white">
-                  <Zap className="h-4 w-4 text-brand-aqua" />
-                  Teklifiniz hazır — 1 dk içinde elinizde
-                </p>
-                <p className="mt-1.5 text-xs leading-relaxed text-white/50">
-                  KamuKent üyelerine özel fiyat ve teknik tekliflerimizi aşağıdan indirin ya da
-                  indirmeden önce inceleyin. Teklifler; kapsam, iş programı ve ödeme koşullarını
-                  madde madde içerir.
-                </p>
-                <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                  {TEKLIF_PDFLERI.map((t) => {
-                    const uygun = kat === t.kat
-                    return (
-                      <div
-                        key={t.kat}
-                        className={`rounded-xl border p-5 transition ${
-                          uygun
-                            ? 'border-brand-aqua/50 bg-brand-aqua/10'
-                            : 'border-white/10 bg-white/5'
-                        }`}
-                      >
-                        {uygun && (
-                          <span className="inline-block rounded-full bg-brand-aqua px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-neutral-950">
-                            Parselinize uygun
-                          </span>
-                        )}
-                        <p className="font-display mt-2 text-base font-semibold">{t.title}</p>
-                        <p className="mt-1.5 text-xs leading-relaxed text-white/55">{t.desc}</p>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                          <a
-                            href={t.file}
-                            download
-                            className="inline-flex items-center gap-1.5 rounded-full bg-brand-aqua px-4 py-2 text-xs font-bold text-neutral-950 transition hover:bg-white"
-                          >
-                            <FileDown className="h-3.5 w-3.5" />
-                            PDF'i İndir
-                          </a>
-                          <a
-                            href={t.file}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold text-white/85 transition hover:border-white/40 hover:text-white"
-                          >
-                            <Eye className="h-3.5 w-3.5" />
-                            İndirmeden Aç
-                          </a>
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-                <p className="mt-4 text-[11px] leading-relaxed text-white/40">
-                  Kararsızsanız ada ve parsel numaranızı yukarıdaki forma yazın; kat durumunu birlikte
-                  teyit edelim, size özel plan çıkaralım.
-                </p>
-              </div>
             </div>
           </div>
         </Reveal>

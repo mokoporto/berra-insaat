@@ -155,8 +155,9 @@ def sss_html(faqs) -> str:
 FORM_HTML = f"""
 <div class="form-card" id="teklif">
   <h2>Teklif Alın — 1 dk'da</h2>
-  <p>Ada ve parsel numaranızı yazın; kat durumunuzu birlikte teyit edelim, size özel fiyat ve
-     ödeme planını iletelim. Formu doldurmanız <strong>1 dakikadan kısa</strong> sürer.</p>
+  <p>Ada ve parsel numaranızı yazın; ekibimiz parselinizin kat durumunu tespit edip size özel
+     fiyat ve ödeme planını <strong>aynı gün</strong> iletsin. Formu doldurmanız
+     <strong>1 dakikadan kısa</strong> sürer.</p>
   <form id="teklif-form" action="https://formsubmit.co/{EMAIL}" method="POST">
     <input type="hidden" name="_subject" value="KamuKent Teklif Talebi — berrayapi.com" />
     <input type="hidden" name="_template" value="table" />
@@ -170,12 +171,6 @@ FORM_HTML = f"""
         <input id="f-ada" name="Ada No" inputmode="numeric" required placeholder="Örn. 470" /></div>
       <div><label for="f-parsel">Parsel No *</label>
         <input id="f-parsel" name="Parsel No" inputmode="numeric" required placeholder="Örn. 3" /></div>
-      <div><label for="f-kat">Kat İmarı</label>
-        <select id="f-kat" name="Kat İmarı">
-          <option value="Bilmiyorum">Bilmiyorum (sorguda belirlenir)</option>
-          <option value="2.5 Kat">2.5 Kat</option>
-          <option value="3.5 Kat">3.5 Kat</option>
-        </select></div>
       <div><label for="f-type">İnşaat Türü</label>
         <select id="f-type" name="İnşaat Türü">
           <option>Anahtar Teslim İnşaat</option>
@@ -183,13 +178,21 @@ FORM_HTML = f"""
           <option>Kaba İnşaat</option>
           <option>Henüz kararsızım</option>
         </select></div>
+      <div><label for="f-konu">Konu</label>
+        <select id="f-konu" name="Konu">
+          <option>İnşaat teklifi</option>
+          <option>Ruhsat süreci</option>
+          <option>Arsa değerlendirme</option>
+          <option>Enerji Kimlik Belgesi</option>
+          <option>Diğer</option>
+        </select></div>
       <div class="full"><label for="f-msg">Mesajınız</label>
         <textarea id="f-msg" name="Mesaj" rows="3" placeholder="Arsanızdan ve hedefinizden kısaca bahsedin..."></textarea></div>
       <div class="full"><button type="submit" class="btn btn-aqua">Teklif Talebi Gönder</button></div>
     </div>
     <p class="form-note">Bilgileriniz yalnızca teklif için kullanılır; üçüncü kişilerle paylaşılmaz.</p>
   </form>
-  <div class="ok-box" id="form-ok">Talebiniz alındı — en kısa sürede sizi arıyoruz. Teşekkürler.</div>
+  <div class="ok-box" id="form-ok">Talebiniz alındı. Parselinizin kat durumunu tespit edip size özel teklifi en kısa sürede iletiyoruz. Teşekkürler.</div>
   <div class="err-box" id="form-err">Gönderim başarısız oldu. Lütfen tekrar deneyin veya bizi telefonla arayın.</div>
 </div>
 """
