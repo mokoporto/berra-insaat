@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { NAV_LINKS } from '@/lib/site'
+import { NAV_LINKS, KAMUKENT_PAGES } from '@/lib/site'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -43,20 +43,47 @@ export default function Navbar() {
 
         {/* Masaüstü menü */}
         <ul className="hidden items-center gap-1 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                  solid
-                    ? 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
-                    : 'text-white/85 hover:bg-white/10 hover:text-white'
-                }`}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+          {NAV_LINKS.map((link) =>
+            link.href === '#kamukent' ? (
+              <li key={link.href} className="group relative">
+                <a
+                  href={link.href}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                    solid
+                      ? 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
+                      : 'text-white/85 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                </a>
+                <ul className="invisible absolute left-0 top-full z-50 w-64 translate-y-1 rounded-2xl border border-neutral-100 bg-white p-2 opacity-0 shadow-xl shadow-neutral-900/10 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                  {KAMUKENT_PAGES.map((p) => (
+                    <li key={p.href}>
+                      <a
+                        href={p.href}
+                        className="block rounded-xl px-4 py-2.5 text-sm font-medium text-neutral-700 transition-colors hover:bg-brand/5 hover:text-brand"
+                      >
+                        {p.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ) : (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                    solid
+                      ? 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
+                      : 'text-white/85 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ),
+          )}
         </ul>
 
         <div className="flex items-center gap-3">
@@ -103,6 +130,21 @@ export default function Navbar() {
               >
                 {link.label}
               </a>
+              {link.href === '#kamukent' && (
+                <ul className="mt-1 space-y-1 border-l-2 border-brand/20 pl-4">
+                  {KAMUKENT_PAGES.map((p) => (
+                    <li key={p.href}>
+                      <a
+                        href={p.href}
+                        onClick={() => setOpen(false)}
+                        className="block rounded-lg px-3 py-2 text-sm text-neutral-600 hover:bg-neutral-100"
+                      >
+                        {p.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
           <li className="pt-2">

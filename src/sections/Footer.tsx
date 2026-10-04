@@ -1,5 +1,5 @@
 import { ArrowUp } from 'lucide-react'
-import { NAV_LINKS, CONTACT } from '@/lib/site'
+import { NAV_LINKS, KAMUKENT_PAGES, CONTACT } from '@/lib/site'
 
 export default function Footer() {
   return (
@@ -42,9 +42,22 @@ export default function Footer() {
             <ul className="mt-5 space-y-3 text-sm">
               <li><a href="/hakkimizda" className="text-white/70 transition-colors hover:text-brand-aqua">Hakkımızda</a></li>
               <li><a href="/iletisim" className="text-white/70 transition-colors hover:text-brand-aqua">İletişim</a></li>
-              <li><a href="/kamukent" className="text-white/70 transition-colors hover:text-brand-aqua">KamuKent Parsel Sorgulama</a></li>
               <li><a href="/gizlilik" className="text-white/70 transition-colors hover:text-brand-aqua">Gizlilik Politikası</a></li>
               <li><a href="/privacy" className="text-white/70 transition-colors hover:text-brand-aqua">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          {/* KamuKent */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40">KamuKent</h4>
+            <ul className="mt-5 space-y-3 text-sm">
+              {KAMUKENT_PAGES.map((p) => (
+                <li key={p.href}>
+                  <a href={p.href} className="text-white/70 transition-colors hover:text-brand-aqua">
+                    {p.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 

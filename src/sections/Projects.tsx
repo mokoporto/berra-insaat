@@ -4,7 +4,7 @@ import { Reveal } from '@/components/Reveal'
 
 const PHOTOS = Array.from(
   { length: 41 },
-  (_, i) => `/images/projects/proje-${String(i + 1).padStart(2, '0')}.jpg`,
+  (_, i) => `/images/projects/proje-${String(i + 1).padStart(2, '0')}.webp`,
 )
 
 export default function Projects() {

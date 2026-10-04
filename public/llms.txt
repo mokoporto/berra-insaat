@@ -27,7 +27,11 @@ incelenebilir.
 ## Sayfalar
 
 - [Ana sayfa](https://berrayapi.com/) — hizmetler, KamuKent parsel sorgusu, teklif şablonları, iletişim
-- [KamuKent parsel sorgulama](https://berrayapi.com/kamukent.html) — odak sayfa: parsel haritası, 117 adalık liste, 9 soruluk SSS
+- [KamuKent parsel haritası ve sorgulama](https://berrayapi.com/kamukent) — parsel haritası, 117 adalık liste, SSS
+- [KamuKent inşaat](https://berrayapi.com/kamukent-insaat) — kaba / ileri kaba / anahtar teslim karşılaştırması, iş programı, galeri, SSS
+- [KamuKent arsa rehberi](https://berrayapi.com/kamukent-arsa) — arsa alım kontrol listesi, toplam maliyet kalemleri, SSS
+- [KamuKent ruhsat rehberi](https://berrayapi.com/kamukent-ruhsat) — 2.5 / 3.5 kat evrak listeleri, ücretler, adım adım süreç, SSS
+- [KamuKent haberler](https://berrayapi.com/kamukent-haberler) — yerleşimdeki son gelişmeler ve duyurular
 - [Hakkımızda](https://berrayapi.com/hakkimizda.html) — firma tanıtımı, KamuKent'teki rolümüz, çalışma anlayışımız
 - [İletişim](https://berrayapi.com/iletisim.html) — adres, telefon, WhatsApp, e-posta, formlar
 - [Gizlilik Politikası](https://berrayapi.com/gizlilik.html) — KVKK, çerezler, veri sahibi hakları

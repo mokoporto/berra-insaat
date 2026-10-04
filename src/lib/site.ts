@@ -8,6 +8,14 @@ export const NAV_LINKS = [
   { label: 'İletişim', href: '#iletisim' },
 ] as const
 
+export const KAMUKENT_PAGES = [
+  { label: 'Parsel Sorgulama ve Harita', href: '/kamukent' },
+  { label: 'KamuKent İnşaat', href: '/kamukent-insaat' },
+  { label: "KamuKent'te Arsa", href: '/kamukent-arsa' },
+  { label: 'Ruhsat Süreci', href: '/kamukent-ruhsat' },
+  { label: 'Haberler', href: '/kamukent-haberler' },
+] as const
+
 export const CONTACT = {
   phone: '+90 533 818 29 31',
   email: 'info@berramuhendislik.com',

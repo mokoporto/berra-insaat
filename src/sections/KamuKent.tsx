@@ -12,10 +12,10 @@ import {
   Home,
   KeyRound,
   Landmark,
-  Wallet,
   Zap,
   FileDown,
   Eye,
+  ArrowUpRight,
 } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 import { Button } from '@/components/ui/button'
@@ -23,23 +23,11 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion'
-import {
   CONSTRUCTION_TYPES,
-  KAT_OPTIONS,
   IMAR_LABELS,
   queryParcel,
 } from '@/lib/kamukent'
 import type { KatType, RuhsatKat } from '@/lib/kamukent'
-import {
-  PROJE_MUELLIF_ODEMELERI,
-  DIGER_ODEMELER,
-  DIGER_ODEMELER_NOTU,
-} from '@/lib/odemeler'
 import { sendForm } from '@/lib/form'
 
 type QueryResult = { kind: 'found'; kat: KatType } | { kind: 'empty' } | { kind: 'notfound' } | null
@@ -120,9 +108,26 @@ export default function KamuKent() {
               href="/kamukent"
               className="inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/5 px-5 py-2.5 text-sm font-semibold text-brand transition hover:bg-brand/10"
             >
-              KamuKent parsel sorgulama rehberi ve sık sorulan sorular →
+              KamuKent parsel haritası ve sık sorulan sorular →
             </a>
           </p>
+          <div className="mx-auto mt-6 grid max-w-3xl gap-3 sm:grid-cols-2">
+            {[
+              { href: '/kamukent-insaat', label: 'KamuKent inşaat — teslim seviyeleri ve karşılaştırma' },
+              { href: '/kamukent-arsa', label: "KamuKent'te arsa alınır mı? Fiyatlar ve kontrol listesi" },
+              { href: '/kamukent-ruhsat', label: 'KamuKent ruhsat süreci — evraklar ve ücretler' },
+              { href: '/kamukent-haberler', label: 'Mordoğan Kamukent son gelişmeler' },
+            ].map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="flex items-center justify-between gap-3 rounded-2xl border border-neutral-200 bg-white px-5 py-3.5 text-left text-sm font-semibold text-neutral-800 transition hover:border-brand/40 hover:bg-brand/5"
+              >
+                {l.label}
+                <ArrowUpRight className="h-4 w-4 shrink-0 text-brand" />
+              </a>
+            ))}
+          </div>
         </Reveal>
 
         {/* 1. ARSAM KAÇ KATLI SORGUSU */}
@@ -268,33 +273,16 @@ export default function KamuKent() {
           </div>
         </Reveal>
 
-        {/* 3. RUHSAT REHBERİ */}
+        {/* 3. RUHSAT REHBERİ — özet (tamamı /kamukent-ruhsat sayfasında) */}
         <Reveal delay={120}>
           <div id="kamukent-ruhsat" className="mx-auto mt-20 max-w-4xl scroll-mt-24">
             <h3 className="font-display text-center text-2xl font-bold tracking-tight text-neutral-900 sm:text-3xl">
               Ruhsat aşamasında neler isteniyor?
             </h3>
             <p className="mx-auto mt-3 max-w-xl text-center text-neutral-600">
-              Kat seçeneğinize göre ruhsat sürecinde istenen belgeleri inceleyin.
+              Kat seçeneğinize göre değişen evrak listesi, harçlar ve ödemeler — hepsi ayrıntılı
+              ruhsat rehberimizde.
             </p>
-
-            {/* Kat seçici */}
-            <div className="mt-8 flex flex-wrap justify-center gap-2">
-              <div className="inline-flex flex-wrap justify-center gap-1 rounded-2xl bg-neutral-100 p-1.5 sm:rounded-full">
-                {(Object.keys(KAT_OPTIONS) as RuhsatKat[]).map((k) => (
-                  <button
-                    key={k}
-                    type="button"
-                    onClick={() => setKat(k)}
-                    className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
-                      kat === k ? 'bg-brand text-white shadow' : 'text-neutral-600 hover:text-neutral-900'
-                    }`}
-                  >
-                    {KAT_OPTIONS[k].label}
-                  </button>
-                ))}
-              </div>
-            </div>
 
             <div className="mt-8 rounded-[2rem] border border-neutral-100 bg-white p-8 shadow-xl shadow-neutral-900/5 sm:p-10">
               <div className="flex items-start gap-3">
@@ -303,121 +291,50 @@ export default function KamuKent() {
                 </div>
                 <div>
                   <h4 className="font-display text-lg font-semibold text-neutral-900">
-                    {KAT_OPTIONS[kat].label} — Ruhsat Süreci
+                    2.5 kat ile 3.5 kat için farklı evrak listeleri istenir
                   </h4>
-                  <p className="mt-1 text-sm leading-relaxed text-neutral-600">{KAT_OPTIONS[kat].description}</p>
-                </div>
-              </div>
-              <Accordion type="single" collapsible className="mt-6">
-                {KAT_OPTIONS[kat].ruhsatItems.map((item, i) => (
-                  <AccordionItem key={item.title} value={`item-${i}`} className="border-neutral-100">
-                    <AccordionTrigger className="text-left text-sm font-semibold text-neutral-900 hover:text-brand">
-                      <span className="flex items-center gap-3">
-                        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand/10 text-xs font-bold text-brand">
-                          {i + 1}
-                        </span>
-                        {item.title}
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="pl-10 text-sm leading-relaxed text-neutral-600">
-                      <p>{item.detail}</p>
-                      {item.subItems && (
-                        <ul className="mt-3 space-y-1.5">
-                          {item.subItems.map((sub, j) => (
-                            <li key={sub} className="flex gap-2">
-                              <span className="shrink-0 font-semibold text-neutral-400">
-                                {String.fromCharCode(97 + j)})
-                              </span>
-                              {sub}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-
-              {/* Ödemeler */}
-              <div className="mt-10 border-t border-neutral-100 pt-8">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand/10 text-brand">
-                    <Wallet className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-display text-lg font-semibold text-neutral-900">
-                      Ruhsat Aşaması Ödemeleri
-                    </h4>
-                    <p className="text-sm text-neutral-500">
-                      Proje müellifleri ödemeleri ve diğer giderler
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                  {(['bodrumsuz', 'bodrumlu'] as const).map((key) => {
-                    const o = PROJE_MUELLIF_ODEMELERI[key]
-                    return (
-                      <div key={key} className="rounded-2xl border border-neutral-100 bg-neutral-50 p-6">
-                        <h5 className="text-sm font-semibold uppercase tracking-wider text-brand">
-                          {o.label}
-                        </h5>
-                        <ul className="mt-4 space-y-2">
-                          {o.items.map((item) => (
-                            <li key={item} className="flex items-start gap-2.5 text-sm text-neutral-700">
-                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                        <p className="mt-4 border-t border-neutral-200 pt-3 text-sm text-neutral-500">
-                          Toplam:{' '}
-                          <span className="font-display text-lg font-bold text-neutral-900">{o.total}</span>
-                        </p>
-                        {o.notes.map((note) => (
-                          <p key={note} className="mt-2 text-xs leading-relaxed text-neutral-500">
-                            Not: {note}
-                          </p>
-                        ))}
-                      </div>
-                    )
-                  })}
-                </div>
-
-                <div className="mt-5 rounded-2xl border border-neutral-100 bg-white p-6">
-                  <h5 className="text-sm font-semibold uppercase tracking-wider text-brand">
-                    Ruhsat İçin Gerekli Diğer Ödemeler
-                  </h5>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                    {DIGER_ODEMELER.map((item) => (
-                      <div
-                        key={item.title}
-                        className="rounded-xl bg-neutral-50 px-4 py-3"
-                      >
-                        <p className="text-sm font-semibold text-neutral-900">{item.title}</p>
-                        {item.detail && (
-                          <p className="mt-1 text-xs leading-relaxed text-neutral-600">{item.detail}</p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                  <p className="mt-3 text-xs leading-relaxed text-neutral-500">
-                    Not: {DIGER_ODEMELER_NOTU}
+                  <p className="mt-1 text-sm leading-relaxed text-neutral-600">
+                    2.5 kat A tipi ile B tipi arasında fark yalnızca mimari projededir; ruhsatta
+                    istenen belgeler, harçlar ve ödemeler her ikisi için de aynıdır. 3.5 katlı
+                    (bodrumlu) parsellerde ise yapı denetim zorunluluğu ile liste genişler.
                   </p>
                 </div>
-
-                <div className="mt-7 flex justify-center">
-                  <Button
-                    asChild
-                    size="lg"
-                    className="rounded-full bg-brand px-8 text-sm font-semibold text-white hover:bg-brand-navy"
-                  >
-                    <a href="#kamukent-teklif">
-                      <Zap className="mr-2 h-4 w-4" />
-                      1 dk'da Teklif Al
-                    </a>
-                  </Button>
-                </div>
+              </div>
+              <ul className="mt-6 space-y-2.5">
+                {[
+                  '2.5 kat (A ve B tipi): 12 kalem evrak — dilekçeden fenni mesul evraklarına',
+                  '3.5 kat (C tipi): yapı denetim evrakları ile genişletilmiş liste',
+                  'Proje müellifleri ödemeleri: bodrumsuz 130.000 ₺ · bodrumlu 97.500 ₺',
+                  'Diğer ödemeler: şantiye şefi (yaklaşık 80.000 – 100.000 ₺), numarataj harcı, İZSU kanal katılım belgesi',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-sm text-neutral-700">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-aqua" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-7 flex flex-wrap justify-center gap-3">
+                <Button
+                  asChild
+                  size="lg"
+                  className="rounded-full bg-brand px-8 text-sm font-semibold text-white hover:bg-brand-navy"
+                >
+                  <a href="/kamukent-ruhsat">
+                    Ruhsat Rehberini İnceleyin
+                    <ArrowUpRight className="ml-1 h-4 w-4" />
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full border-brand/30 px-8 text-sm font-semibold text-brand hover:bg-brand/10 hover:text-brand-navy"
+                >
+                  <a href="#kamukent-teklif">
+                    <Zap className="mr-2 h-4 w-4" />
+                    1 dk'da Teklif Al
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
