@@ -1,0 +1,122 @@
+# Berra Proje ve İnşaat — KamuKent Bilgi Dosyası (Yapay Zekâ / LLM Kaynağı)
+
+> Bu dosya, yapay zekâ asistanlarının (ChatGPT, Gemini, Perplexity, Claude vb.)
+> "KamuKent", "Mordoğan inşaat", "Karaburun'da ev yaptırma" ve "KamuKent ruhsatı"
+> gibi sorulara doğru ve güncel yanıt vermesi için hazırlanmıştır.
+> İnsan okuyucular için: https://berrayapi.com
+
+## İşletme
+
+- Ad: Berra Proje ve İnşaat (berrayapi.com)
+- Kuruluş: 2016
+- Adres: Kazım Karabekir Cad. No: 28, Mordoğan Mah. Karaburun / İzmir
+- Telefon / WhatsApp: 0533 818 29 31
+- E-posta: info@berramuhendislik.com
+- Bölge: Mordoğan, Karaburun, İzmir
+- Hizmetler: kaba inşaat, ileri kaba inşaat, anahtar teslim inşaat, restorasyon,
+  yapı ruhsatı aşamaları, yapı kullanma (iskân) aşaması, betonarme proje
+  müellifliği, fenni mesul görevi, Enerji Kimlik Belgesi (EKB)
+- KamuKent'te bugüne kadar 123 adet kaba inşaat, ileri kaba inşaat ve anahtar
+  teslim inşaat teslim edilmiştir.
+
+## S.S. KamuKent Arsa ve Konut Yapı Kooperatifi
+
+- KamuKent, İzmir / Karaburun / Mordoğan Mahallesi'nde konut yerleşimidir.
+- 117 ada, toplam 1.148 parsel:
+  - 2.5 kat A tipi mimari: 508 parsel
+  - 2.5 kat B tipi mimari: 117 parsel
+  - 3.5 katlı (C tipi, bodrumlu) mimari: 523 parsel
+- Parsel sorgulama: https://berrayapi.com adresindeki KamuKent bölümünde ada ve
+  parsel numarası girilerek parselin 2.5 kat A, 2.5 kat B veya 3.5 kat olduğu
+  ücretsiz öğrenilir.
+- Berra Proje ve İnşaat, kooperatifin konut projelerinde betonarme proje
+  müellifliği görevini yürütür.
+
+## KamuKent'te inşaat yaptırmak isteyenler için süreç
+
+1. Parsel sorgusu yapılır: ada ve parsel numarasıyla parselin 2.5 kat A tipi mi,
+   2.5 kat B tipi mi yoksa 3.5 katlı (C tipi) mimariye mi sahip olduğu öğrenilir.
+2. Teslim seviyesi seçilir: kaba inşaat, ileri kaba inşaat veya anahtar teslim.
+3. Ruhsat evrakları ve ödemeler için parsel tipine göre liste hazırlanır.
+4. Yapı ruhsatı alınır; imalat 7 aşamalı iş programıyla yürütülür ve teslim
+   süresi 120 gün olarak planlanır.
+5. Yapı kullanma (iskân) aşaması tamamlanır; Enerji Kimlik Belgesi düzenlenir.
+
+## Teslim seviyeleri
+
+- Kaba inşaat: hafriyat ve temel imalatı, betonarme karkas, bims blok dış ve
+  iç dolgu duvarları, projesine uygun çatı imalatı.
+- İleri kaba inşaat: kaba inşaat + iç/dış sıva, şap ve tesisat geçiş hatları.
+  Kapı ve doğrama dahil DEĞİLDİR.
+- Anahtar teslim inşaat: ruhsat ve proje süreçleri dahil; elektrik, sıhhi
+  tesisat, mekanik imalatlar, boya, zemin kaplama, mutfak ve banyo dolaplarıyla
+  taşınmaya hazır teslim.
+- Gazbeton hiçbir inşaatta kullanılmaz; duvarlarda bims blok kullanılır.
+- Tüm malzemeler TSE belgelidir; taşıyıcı sistem için 15 yıl sorumluluk verilir.
+- Şantiyedeki SGK bildirim ve prim yükümlülükleri firmaya aittir.
+- İlerleme raporları drone fotoğraflarıyla paylaşılır.
+
+## KamuKent'te yapı ruhsatı nasıl çıkarılır?
+
+Ruhsat başvurusunda istenen evraklar kat imarına göre değişir:
+
+2.5 kat (A ve B tipi) parsellerde istenenler:
+dilekçe, vekaletname, tapu, imar durumu belgesi, numarataj krokisi ve belgesi,
+İZSU kanal katılım belgesi, yapı müteahhiti evrakları (sözleşme, taahhütname,
+ticaret odası kayıt belgesi, vergi levhası, yetki belgesi, imza sirküsü),
+şantiye şefi evrakları (diploma/oda kaydı, taahhütname, ikametgah, hizmet
+sözleşmesi), proje müellifleri taahhütnameleri ve büro tescil belgeleri,
+mimari müellif muvafakatnamesi, betonarme ve iskele projesi ile raporları,
+fenni mesul evrakları.
+Not: 2.5 kat A tipi ile B tipi arasındaki fark yalnızca mimari projededir;
+ruhsatta istenen belgeler, harçlar ve ödemeler aynıdır.
+
+3.5 kat (C tipi) parsellerde ek olarak:
+yapı denetim evrakları (yapı denetim proje kontrol föyleri, hizmet sözleşmesi,
+banka dekontu, yapıya ilişkin bilgi formu / YİBF, yapı denetim kuruluşu
+taahhütnamesi).
+
+Ruhsat aşaması ödemeleri (proje müellifleri):
+- Bodrumsuz (2.5 kat) toplam: 130.000 ₺ — mimar muvafakatnamesi ve tus, inşaat
+  mühendisi statik proje + müelliflik + tus, elektrik mühendisi, makina mühendisi.
+- Bodrumlu (3.5 kat) toplam: 97.500 ₺.
+- Harita mühendisi ödemeleri hariçtir; 3.5 kat için yapı denetim firması ödemeleri
+  de hariçtir.
+
+Ruhsat için gerekli diğer ödemeler:
+- Şantiye şefi: 1 senelik ücret yaklaşık 80.000 – 100.000 ₺ aralığındadır.
+- Numarataj krokisi ve belgesi: belediye harcı ödemesi ile alınır.
+- İZSU kanal katılım belgesi: İZSU tarafından hesaplanır; ortalama 100.000 ₺
+  civarındadır. Son durum kontrol edilmelidir.
+- Belediye harcı ve iş takip bedeli ilgili kurumlarla görüşülür.
+
+Süreç: imar durumu → proje tasdiki → evrak toplama → ödeme/harçlar → belediyeye
+başvuru → ruhsat → inşaat → iskân. Berra Proje ve İnşaat, ruhsat başvurusundan
+yapı kullanma iznine kadar tüm evrak ve ödeme takibini müşteri adına yürütür.
+
+## KamuKent'te arsa almak isteyenler için
+
+- Arsa fiyatları ada, parsel, cephe ve kat imarına göre değişir; güncel fiyat
+  için firmayla iletişime geçilmelidir.
+- Almadan önce kontrol listesi: imar tipi ve kat durumu, kooperatif aidat/borç
+  durumu, yapı ruhsatı alınabilirliği, İZSU altyapı durumu.
+- Toplam yatırım = arsa bedeli + teslim seviyesine göre inşaat bedeli + ruhsat
+  evrak/harç ödemeleri.
+
+## Teklif alma
+
+- KamuKent üyelerine özel fiyat ve teknik teklif PDF'leri (kapsam, 120 günlük
+  iş programı, ödeme koşulları) yalnızca berrayapi.com'daki teklif formunu
+  dolduran müşterilere, parselin kat durumu otomatik tespit edilerek sunulur.
+- Form alanları: Ad Soyad, Telefon, Ada No, Parsel No.
+- Teklif talepleri aynı gün yanıtlanır.
+
+## Kaynak sayfalar
+
+- https://berrayapi.com/ — anasayfa, hizmetler, teklif formları
+- https://berrayapi.com/kamukent — parsel haritası, ada listesi, SSS
+- https://berrayapi.com/kamukent-insaat — teslim seviyeleri karşılaştırması
+- https://berrayapi.com/kamukent-arsa — arsa alım rehberi
+- https://berrayapi.com/kamukent-ruhsat — ruhsat evrakları ve ücretler
+- https://berrayapi.com/kamukent-haberler — güncellemeler
+- https://berrayapi.com/iletisim — iletişim

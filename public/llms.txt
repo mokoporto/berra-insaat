@@ -5,6 +5,8 @@
 > betonarme proje müellifliği ve fenni mesul görevi. Ruhsat aşamasından
 > yapı kullanma aşamasına kadar yanınızdayız.
 
+[full content](https://berrayapi.com/llms-full.txt) — KamuKent, ruhsat süreci, teslim seviyeleri ve arsa rehberinin ayrıntılı yapay zekâ kaynağı.
+
 ## Hizmetler
 
 - Kaba İnşaat (tesfiyeden çatıya taşıyıcı yapı, bims blok duvar)
