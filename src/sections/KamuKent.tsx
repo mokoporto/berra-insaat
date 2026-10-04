@@ -14,6 +14,8 @@ import {
   Landmark,
   Wallet,
   Zap,
+  FileDown,
+  Eye,
 } from 'lucide-react'
 import { Reveal } from '@/components/Reveal'
 import { Button } from '@/components/ui/button'
@@ -50,6 +52,21 @@ export default function KamuKent() {
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
   const [sendError, setSendError] = useState(false)
+
+  const TEKLIF_PDFLERI: { kat: RuhsatKat; title: string; desc: string; file: string }[] = [
+    {
+      kat: '2.5',
+      title: '2.5 Katlı Teklif',
+      desc: 'A ve B tipi parseller — bodrumsuz projeler için kaba / ileri kaba inşaat kapsamı, 120 günlük iş programı ve ödeme koşulları.',
+      file: '/teklifler/kamukent-2-5-katli-teklif.pdf',
+    },
+    {
+      kat: '3.5',
+      title: '3.5 Katlı Teklif',
+      desc: 'C tipi parseller — bodrumlu projeler için kaba / ileri kaba inşaat kapsamı, 120 günlük iş programı ve ödeme koşulları.',
+      file: '/teklifler/kamukent-3-5-katli-teklif.pdf',
+    },
+  ]
 
   async function handleTeklif(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -96,7 +113,7 @@ export default function KamuKent() {
           <p className="mt-5 text-base leading-relaxed text-neutral-600 sm:text-lg">
             Ada ve parsel numaranızı girin, Mordoğan'daki parselinizin 2.5 kat A tipi mi,
             2.5 kat B tipi mi yoksa 3.5 katlı mimariye mi sahip olduğunu öğrenin;
-            ruhsat sürecini inceleyin ve teklif alın.
+            ruhsat sürecini inceleyin ve <strong>1 dk içinde teklifinizi indirin</strong>.
           </p>
           <p className="mt-4">
             <a
@@ -397,7 +414,7 @@ export default function KamuKent() {
                   >
                     <a href="#kamukent-teklif">
                       <Zap className="mr-2 h-4 w-4" />
-                      Anında Teklif Al
+                      1 dk'da Teklif Al
                     </a>
                   </Button>
                 </div>
@@ -415,8 +432,8 @@ export default function KamuKent() {
                   <ClipboardList className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-semibold">Teklif Alın</h3>
-                  <p className="text-sm text-white/60">24 saat içinde size dönüş yapalım</p>
+                  <h3 className="font-display text-xl font-semibold">1 dk'da Teklif Alın</h3>
+                  <p className="text-sm text-white/60">KamuKent üyelerine özel — teklifinizi indirin veya indirmeden önce inceleyin</p>
                 </div>
               </div>
 
@@ -427,6 +444,15 @@ export default function KamuKent() {
                   <p className="mt-2 max-w-sm text-sm text-white/60">
                     En kısa sürede sizi arayalım. Acil durumlar için doğrudan telefonumuzu kullanabilirsiniz.
                   </p>
+                  <a
+                    href={TEKLIF_PDFLERI.find((t) => t.kat === kat)?.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 rounded-full border border-brand-aqua/40 px-5 py-2.5 text-sm font-semibold text-brand-aqua transition hover:bg-brand-aqua/10"
+                  >
+                    <Eye className="h-4 w-4" />
+                    {TEKLIF_PDFLERI.find((t) => t.kat === kat)?.title} PDF'ini indirmeden inceleyin
+                  </a>
                 </div>
               ) : (
                 <form
@@ -497,6 +523,65 @@ export default function KamuKent() {
                   </Button>
                 </form>
               )}
+
+              {/* Teklif PDF'leri — 1 dk'da teklif */}
+              <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
+                <p className="flex items-center gap-2 text-sm font-semibold text-white">
+                  <Zap className="h-4 w-4 text-brand-aqua" />
+                  Teklifiniz hazır — 1 dk içinde elinizde
+                </p>
+                <p className="mt-1.5 text-xs leading-relaxed text-white/50">
+                  KamuKent üyelerine özel fiyat ve teknik tekliflerimizi aşağıdan indirin ya da
+                  indirmeden önce inceleyin. Teklifler; kapsam, iş programı ve ödeme koşullarını
+                  madde madde içerir.
+                </p>
+                <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                  {TEKLIF_PDFLERI.map((t) => {
+                    const uygun = kat === t.kat
+                    return (
+                      <div
+                        key={t.kat}
+                        className={`rounded-xl border p-5 transition ${
+                          uygun
+                            ? 'border-brand-aqua/50 bg-brand-aqua/10'
+                            : 'border-white/10 bg-white/5'
+                        }`}
+                      >
+                        {uygun && (
+                          <span className="inline-block rounded-full bg-brand-aqua px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-neutral-950">
+                            Parselinize uygun
+                          </span>
+                        )}
+                        <p className="font-display mt-2 text-base font-semibold">{t.title}</p>
+                        <p className="mt-1.5 text-xs leading-relaxed text-white/55">{t.desc}</p>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          <a
+                            href={t.file}
+                            download
+                            className="inline-flex items-center gap-1.5 rounded-full bg-brand-aqua px-4 py-2 text-xs font-bold text-neutral-950 transition hover:bg-white"
+                          >
+                            <FileDown className="h-3.5 w-3.5" />
+                            PDF'i İndir
+                          </a>
+                          <a
+                            href={t.file}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold text-white/85 transition hover:border-white/40 hover:text-white"
+                          >
+                            <Eye className="h-3.5 w-3.5" />
+                            İndirmeden Aç
+                          </a>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+                <p className="mt-4 text-[11px] leading-relaxed text-white/40">
+                  Kararsızsanız ada ve parsel numaranızı yukarıdaki forma yazın; kat durumunu birlikte
+                  teyit edelim, size özel plan çıkaralım.
+                </p>
+              </div>
             </div>
           </div>
         </Reveal>
